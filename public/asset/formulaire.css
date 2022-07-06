@@ -1,0 +1,33 @@
+.container .row {
+    padding-left: 15% ;
+    padding-right: 15% ;
+}
+.image {
+    height: 250px !important;
+}
+#header {
+    background-color: lightgray !important;
+}
+
+.moreInfo
+{
+    margin-bottom: 20px !important;
+    background-color: lightgray !important;
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+}
+.mailLogo {
+    width: 53px !important;
+}
+.telLogo {
+    width: 43px !important;
+}
+.inscrire{
+    margin-bottom: 100px !important;
+}
+@media screen and (max-width: 700px) {
+    #header { 
+        background-color: black !important;
+        height: 10em !important;
+    }
+}

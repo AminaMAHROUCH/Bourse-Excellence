@@ -1,0 +1,10 @@
+Add file:
+     // if($request->file('salaire'))
+        // {
+        //     $salaire = $request->file('salaire');
+        //     $filename = time() . '.' .  $salaire->extension();
+        //     $filePath = public_path() . '/files/uploads/';
+        //     $salaire->move($filePath, $filename);
+        //     $candidature->salaire  = $filename;
+        // }
+
