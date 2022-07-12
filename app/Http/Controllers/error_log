@@ -1,0 +1,16 @@
+[27-May-2022 22:45:37 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/HomeController.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/HomeController.php on line 9
+[27-May-2022 22:46:29 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/HomeController.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/HomeController.php on line 9
+[28-May-2022 00:23:19 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Routing\Controller' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/Controller.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/Controller.php on line 10
+[28-May-2022 00:23:20 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/HomeController.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/HomeController.php on line 9

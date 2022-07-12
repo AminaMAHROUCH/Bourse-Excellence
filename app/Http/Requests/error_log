@@ -1,0 +1,16 @@
+[28-May-2022 00:23:23 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Http\FormRequest' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Requests/candidatureStore.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Requests/candidatureStore.php on line 7
+[28-May-2022 00:23:23 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Http\FormRequest' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Requests/StoreCandidatureRequest.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Requests/StoreCandidatureRequest.php on line 7
+[28-May-2022 00:23:24 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Http\FormRequest' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Requests/StoreRenouvellementRequest.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Requests/StoreRenouvellementRequest.php on line 7
+[28-May-2022 00:23:24 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Http\FormRequest' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Requests/StoreStudentRequest.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Requests/StoreStudentRequest.php on line 7

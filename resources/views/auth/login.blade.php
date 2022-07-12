@@ -56,11 +56,9 @@
                                 <input type="checkbox" class="form-check-input" id="remember-me">
                                 <label for="remember-me" class="form-check-label">تذكرني</label>
                             </div>
-                            @if (Route::has('password.request'))
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <a class="btn btn-link" href="{{ url('/etudiant/password') }}">
                                     {{ __('هل نسيت كلمة السر؟') }}
                                 </a>
-                            @endif
                         </div>
                         <div class="form-group">
                             <button type="submit" class="login-btn">{{ __('تسجيل الدخول') }}</button>

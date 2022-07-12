@@ -65,16 +65,16 @@
                             <div class="col-lg-3 col-3">
                                 <button type="button" class="btn btn-secondary" data-toggle="modal"
                                     data-target="#modal-add">
-                                    add liste
+                                    إضافة طالب
                                 </button>
                             </div>
                             <div class="col-lg-3 col-3">
-                                <button class="btn btn-danger" style="color: white">
-                                    <a href="#" style="color: white"
-                                        onclick="document.getElementById('deleteInter').submit()">
-                                        <strong>حذف</strong>
-                                    </a>
-                                </button>
+                                <!--<button class="btn btn-danger" style="color: white">-->
+                                <!--    <a href="#" style="color: white"-->
+                                <!--        onclick="document.getElementById('InterAll').submit()">-->
+                                <!--        <strong>حذف</strong>-->
+                                <!--    </a>-->
+                                <!--</button>-->
                             </div>
                         </div>
                     </div>
@@ -96,30 +96,26 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <form action="{{ url('boursier/deleteIntermidiare') }}" methode="POST"
-                                        id="deleteInter">
-                                        @csrf
+                                    <!--<form action="{{ url('boursier/deleteGlobalInter') }}" methode="POST"-->
+                                    <!--    id="InterAll">-->
+                                    <!--    @csrf-->
                                         @foreach ($intermidiaires as $intermidiaire)
                                             <tr role="row" class="odd text-center">
-                                                <td><input type="checkbox" name="supprimer[]"
-                                                        value="{{ $intermidiaire->id }}">
+                                                <td>
+                        <input type="checkbox" name="row_[]" value="{{ $intermidiaire->id }}">
+                                                   
                                                 </td>
                                                 <td>{{ $intermidiaire->nom_prenom }}</td>
                                                 <td>{{ $intermidiaire->cni }}</td>
                                                 <td>{{ $intermidiaire->rib }}</td>
                                                 <td>
-                                                    <form
-                                                        action="{{ route('boursier.intemidiare.destroy', $intermidiaire->id) }}"
-                                                        method="post">
-                                                        {{ csrf_field() }}
-                                                        {{ method_field('DELETE') }}
-                                                        <button class="btn" type="submit"><i
-                                                                class="fas fa-trash text-red"></i></button>
-                                                    </form>
-                                                </td>
+                                         <button class=" btn deleteRecord" data-id="{{ $intermidiaire->cni }}" type="button" name="deleting"><i
+                                                                                    class="fas fa-trash text-red"></i></button
+
+                                                                    </td>
                                             </tr>
                                         @endforeach
-                                    </form>
+                                    <!--</form>-->
                                 </tbody>
                             </table>
                             <div>
@@ -143,7 +139,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header bg-orange ">
-                    <h3 class="modal-title text-center" id="exampleModalLabel">مضمون الإعلان</h3>
+                    <h3 class="modal-title text-center" id="exampleModalLabel">لائحة الطلبة </h3>
                     <button type="button" class="close" style="font-size: 40px !important" data-dismiss="modal"
                         aria-label="Close">
                         <span aria-hidden="true" class="text-black">×</span></button>
@@ -155,7 +151,7 @@
                                 <th>الاسم الكامل</th>
                                 <th>ر.ب.و</th>
                                 <th>الحساب البنكي</th>
-                                <th class="text-center"> الاجراءات</th>
+                                <th class="text-center"><input type="checkbox" id="selectAll" /> الاجراءات</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -166,7 +162,8 @@
                                         <td>{{ $fullCandidature->nom_prenom }}</td>
                                         <td>{{ $fullCandidature->cni }}</td>
                                         <td>{{ $fullCandidature->rib }}</td>
-                                        <td><input type="checkbox" name="row[]" value="{{ $fullCandidature->id }}">
+                                        <td>
+                                            <input type="checkbox" name="row[]" value="{{ $fullCandidature->id }}">
                                             <input type="hidden" name="code" value="{{ $panier->num_panier }}">
                                         </td>
                                     </tr>
@@ -189,8 +186,19 @@
         </div>
     </div>
 
+<script src="{{ asset('asset/files/js/jquery-3.3.1.min.js') }}"></script>
 
+<script type="text/javascript">
 
+       
+    $(document).ready(function() {
+     
+        //
+           $('#selectAll').click(function (e) {
+        $(this).closest('table').find('td input:checkbox').prop('checked', this.checked);
+    });
+    });
+</script>
 
 
 
@@ -202,4 +210,31 @@
             $('#example1').DataTable();
         });
     </script>
+<script>
+     jQuery(document).ready(async function(){
+         $(".deleteRecord").click(function () {
+
+         var x = confirm("هل أنت متأكد أنك تريد حذف?");
+         if (x) {
+             var cni = $(this).data("id");
+             var token = $("meta[name='csrf-token']").attr("content");
+
+             $.ajax({
+                 type: 'get',
+                 url: "http://amefemaroc.com/boursier/intemidiare/destroy/" + cni,
+                 data: {
+                     "cni": cni,
+                     "_token": token,
+                 },
+                 success: function (data) {
+                     location.reload(true);
+                 }
+             });
+         } else {
+             return false;
+         }
+
+     });
+       });
+</script>
 @endsection

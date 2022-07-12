@@ -1,0 +1,16 @@
+[27-May-2022 22:31:25 UTC] PHP Fatal error:  Uncaught Error: Interface 'Maatwebsite\Excel\Concerns\FromQuery' not found in /home/amefemaroc/public_html/bourse_excellence/app/Exports/CandiatureExport.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Exports/CandiatureExport.php on line 21
+[27-May-2022 22:31:25 UTC] PHP Fatal error:  Uncaught Error: Interface 'Maatwebsite\Excel\Concerns\FromQuery' not found in /home/amefemaroc/public_html/bourse_excellence/app/Exports/IntermidiareExport.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Exports/IntermidiareExport.php on line 10
+[27-May-2022 22:31:25 UTC] PHP Fatal error:  Uncaught Error: Interface 'Maatwebsite\Excel\Concerns\FromQuery' not found in /home/amefemaroc/public_html/bourse_excellence/app/Exports/PanierExcel.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Exports/PanierExcel.php on line 12
+[27-May-2022 22:31:26 UTC] PHP Fatal error:  Uncaught Error: Interface 'Maatwebsite\Excel\Concerns\FromQuery' not found in /home/amefemaroc/public_html/bourse_excellence/app/Exports/PanierExport.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Exports/PanierExport.php on line 12

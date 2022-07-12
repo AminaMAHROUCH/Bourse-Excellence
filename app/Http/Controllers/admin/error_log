@@ -1,0 +1,76 @@
+[28-May-2022 00:36:13 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/ActualiteController.php:20
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/ActualiteController.php on line 20
+[28-May-2022 00:36:14 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/ArchiveController.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/ArchiveController.php on line 10
+[28-May-2022 00:36:14 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/CandidatureController.php:37
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/CandidatureController.php on line 37
+[28-May-2022 00:36:14 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/ChartDataController.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/ChartDataController.php on line 13
+[28-May-2022 00:36:14 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/ConfigController.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/ConfigController.php on line 9
+[28-May-2022 00:36:14 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/ContoroleController.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/ContoroleController.php on line 8
+[28-May-2022 00:36:15 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/DashboardController.php:27
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/DashboardController.php on line 27
+[28-May-2022 00:36:15 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/FormationController.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/FormationController.php on line 9
+[28-May-2022 00:36:15 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/FullCandidatureController.php:25
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/FullCandidatureController.php on line 25
+[28-May-2022 00:36:15 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/MarketController.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/MarketController.php on line 12
+[28-May-2022 00:36:15 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/PageVisiteurController.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/PageVisiteurController.php on line 9
+[28-May-2022 00:36:18 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/PdfController.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/PdfController.php on line 14
+[28-May-2022 00:36:18 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/PermissionsController.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/PermissionsController.php on line 13
+[28-May-2022 00:36:18 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/ReclamationController.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/ReclamationController.php on line 16
+[28-May-2022 00:36:19 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/RenouvellementController.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/RenouvellementController.php on line 19
+[28-May-2022 00:36:19 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/RolesController.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/RolesController.php on line 14
+[28-May-2022 00:36:19 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/StageController.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/StageController.php on line 10
+[28-May-2022 00:36:19 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/StudentController.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/StudentController.php on line 19
+[28-May-2022 00:36:20 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/UsersController.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/admin/UsersController.php on line 16

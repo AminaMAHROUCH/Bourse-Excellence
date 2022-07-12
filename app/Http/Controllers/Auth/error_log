@@ -1,0 +1,24 @@
+[28-May-2022 00:36:21 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/Auth/ConfirmPasswordController.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/Auth/ConfirmPasswordController.php on line 9
+[28-May-2022 00:36:22 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/Auth/ForgotPasswordController.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/Auth/ForgotPasswordController.php on line 8
+[28-May-2022 00:36:22 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/Auth/LoginController.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/Auth/LoginController.php on line 10
+[28-May-2022 00:36:22 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/Auth/RegisterController.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/Auth/RegisterController.php on line 12
+[28-May-2022 00:36:23 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/Auth/ResetPasswordController.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/Auth/ResetPasswordController.php on line 9
+[28-May-2022 00:36:23 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\Controller' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/Auth/VerificationController.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Controllers/Auth/VerificationController.php on line 9

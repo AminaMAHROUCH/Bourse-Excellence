@@ -263,7 +263,7 @@
                                                     <label style="float: right !important;" for="releve"
                                                         class="float-right">في حالة مزاولة
                                                         الزوج(ة) لمهنة يجب إضافتها</label>
-                                                    <input id="jobe" type="text" class="form-control wizard-required"
+                                                    <input id="jobe" type="text" class="form-control"
                                                         name="profession_conjoint" placeholder="ادخل مهنته(ا) ">
                                                     <div class="wizard-form-error"></div>
 
@@ -378,7 +378,8 @@
                                                                 style="cursor: pointer; border: 2px solid black;">صورة
                                                                 شخصية</label>
                                                             <img id="img1" width="150" height="150" />
-
+                            <p style="color:red; font-size: 10px; font-weight: bold;">يجب أن لا يتجاوز حجم الصورة 1MO</p>
+                            <p class="text-danger text-left js-error-field"  data-target="photo">يجب أن لا يتجاوز حجم الصورة 1MO</p>
                                                         </div>
                                                     </center>
                                                     <div class="row" style="background: #FFFFCC;padding: 10px;">
@@ -438,8 +439,7 @@
                                                         <div class="col-12-xl col-lg-6 col-12 form-group">
                                                             <label for="tel2" class="float-left"> البريد الالكتروني
                                                                 :</label>
-                                                            <input class="form-control wizard-required"
-                                                                data-inputmask="'alias': 'email'" name="email">
+                                                            <input class="form-control wizard-required" placeholder="exemple@exemple.com" name="email">
                                                             <div class="wizard-form-error"></div>
                                                             <p class="text-danger text-left js-error-field"
                                                                 data-target="email"></p>
@@ -684,11 +684,12 @@
                                             <p>Vous pouvez utilisez ce site pour reduire la taille de l'image <a
                                                     href="https://www.resizepixel.com/fr?new=true">cliquer
                                                     ici</a>
-                                            </p>
+                                            </p> <br>
+                                            <p>le format de l'image : (.jpg)</p>
                                             <div class="row">
                                                 <div class="col-12-xl col-lg-6 col-12 form-group">
                                                     <label style="float: right !important;" for="AttestationBac"
-                                                        style="float: right;">شهادة الباكالوريا
+                                                        style="float: right;"> شهادة الباكالوريا
                                                         :</label>
                                                     <input type="file" class="form-control" accept="image/*"
                                                         name="AttestationBac" id="AttestationBac"

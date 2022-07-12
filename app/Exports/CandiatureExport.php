@@ -24,11 +24,12 @@ class CandiatureExport implements FromQuery , WithHeadings , WithMapping, Should
     * @return \Illuminate\Support\Collection
     */
       
-    use Exportable ; 
-    // function __construct($id)
-    // {
-    //     $this->id = $id ;  
-    // }
+  use Exportable;
+
+    public function __construct(string $status)
+    {
+        $this->status = $status;
+    }
 
     public function headings(): array
     {
@@ -36,20 +37,25 @@ class CandiatureExport implements FromQuery , WithHeadings , WithMapping, Should
                     'رقم مسار',
                     'ر.ب.و',
                     'الاسم الكامل',
+                    'الاسم الكامل بالعربية',
                     'العنوان الشخصي',
                     'البريد الإلكتروني',
+                    'مدة الدراسة',
                     'الهاتف 1',
                     '2 الهاتف',
-                    'اسم القيم الديني(ة)',
-                    'اسم الزوج(ة)',
+                    'شعبة البكالوريا',
+                    'الثانوية',
+                    'اسم القيم الديني بالفرنسية',
+                    'اسم الزوج(ة) بالفرنسية',
+                    'اسم القيم الديني(ة) بالعربية',
+                    'اسم الزوج(ة) بالعربية',
                     'عنوان الآباء',
                     'تاريخ الازدياد',
                     'مكان الازدياد',
-                    'الحالة العائلية',
                     'الجنس',
                     'مهنة القيم الديني(ة)',
-                    'هاتف الاب',
                     'هاتف الام',
+                    'هاتف الاب',
                     'الجامعة',
                     'المؤسسة أو الكلية',
                     'الحالة الجسدية',
@@ -61,13 +67,21 @@ class CandiatureExport implements FromQuery , WithHeadings , WithMapping, Should
                     'الميزة',
                     'سنة الحصول على البكالوريا',
                     'النقطة المحصل عليها',
+                    'مدينة الدراسة',
                     'عدد الإخوة',
                     'أحد الأبوين متوفي',
+                    'أحد الأبوين متوفي',
+                    'الفوج',
+                    'دخل القيم الديني',
+                    'دخل الزوج(ة)',
+                    'السن',
+                    'الزوج(ة) عامل(ة)',
                     'الجهة',
                     'الإقليم',
+
             
         ];
-    } 
+    }  
     public function map($row): array
     {
         
@@ -77,34 +91,46 @@ class CandiatureExport implements FromQuery , WithHeadings , WithMapping, Should
         $fields = [
             $row->cne,
             $row->cni,
-            $row-> nom_prenomArab,
-            $row-> adresse,
-            $row-> email,
-            $row-> telephone_1,
-            $row-> telephone_2,
-            $row-> full_name_f,
-            $row-> full_name_m,
-            $row-> adresse_parents,
-            $row-> date_naissance,
-            $row-> lieu_naissance,
-            $row-> situation,
-            $row-> sex,
-            $row-> profession_f,
-            $row-> tel_f,
-            $row-> tel_m,
+            $row-> nom_prenom, 
+            $row->nom_prenomArab,
+            $row->adresse, 
+            $row->email, 
+            $row->duree_etude, 
+            $row->telephone_1, 
+            $row->telephone_2, 
+            $row->filiereBac, 
+            $row->lycee, 
+            $row->nom_prenom_adherent, 
+            $row->nom_prenom_conjoint,
+            $row->nom_prenom_adherentAr,
+            $row->nom_prenom_conjointAr,
+            $row->adresse_parents, 
+            $row->date_naissance,
+            $row->lieu_naissance, 
+            $row->sexe, 
+            $row->profession_adherent, 
+            $row->telephone_conjoint, 
+            $row->telephone_adherent, 
             $row->universite,
-            $row->school,
-            $row-> etat,
-            $row-> filiere,
-            $row-> anneUniversitaire,
-            $row-> profession_m,
-            $row-> matricule,
-            $row-> cniP,
-            $row-> mention,
-            $row-> anne_bac,
-            $row-> note,
-            $row-> nbr,
-            $row-> deces, 
+            $row->ecole, 
+            $row->etat_physique, 
+            $row->filiere,
+            $row->anne_universitaire, 
+            $row->profession_conjoint, 
+            $row->matricule ,
+            $row->cni_adherent ,
+            $row->mention ,
+            $row->anne_bac ,
+            $row->note ,
+            $row->ville ,
+            $row->nbr_freres ,
+            $row->parents_deces,
+            $row->deces,
+            $row->promotion ,
+            $row->salaire,
+            $row->salaire_conjoint ,
+            $row->age ,
+            $row->profession,
             $region->nom_region,
             $province->nom_province,
         ];
@@ -127,7 +153,104 @@ class CandiatureExport implements FromQuery , WithHeadings , WithMapping, Should
     public function query()
     {
         // ->whereIn('id', $this->id )
-      return Candidature::query(); 
+        $lists = null;
         
+     if($this->status == "global"){
+        $lists =   Candidature::query()->select('cne', 
+        'cni',
+        'nom_prenom',
+        'nom_prenomArab',
+        'adresse',
+        'email',
+        'duree_etude',
+        'telephone_1',
+        'telephone_2',
+        'filiereBac',
+        'lycee',
+        'nom_prenom_adherent',
+        'nom_prenom_conjoint',
+        'nom_prenom_adherentAr',
+        'nom_prenom_conjointAr',
+        'adresse_parents',
+        'date_naissance',
+        'lieu_naissance',
+        'sexe',
+        'profession_adherent',
+        'telephone_conjoint',
+        'telephone_adherent',
+        'universite',
+        'ecole',
+        'etat_physique',
+        'filiere',
+        'anne_universitaire',
+        'profession_conjoint',
+        'matricule',
+        'cni_adherent',
+        'mention',
+        'anne_bac',
+        'note',
+        'ville',
+        'nbr_freres',
+        'parents_deces',
+        'deces', 
+        'promotion', 
+        'salaire',
+        'salaire_conjoint',
+        'age',
+        'profession',
+        'region_id_etud',
+        'province_id_etud');
+         
+         
+     }else{
+         
+        $lists =  Candidature::query()->whereStatus($this->status)->select('cne', 
+        'cni',
+        'nom_prenom',
+        'nom_prenomArab',
+        'adresse',
+        'email',
+        'duree_etude',
+        'telephone_1',
+        'telephone_2',
+        'filiereBac',
+        'lycee',
+        'nom_prenom_adherent',
+        'nom_prenom_conjoint',
+        'nom_prenom_adherentAr',
+        'nom_prenom_conjointAr',
+        'adresse_parents',
+        'date_naissance',
+        'lieu_naissance',
+        'sexe',
+        'profession_adherent',
+        'telephone_conjoint',
+        'telephone_adherent',
+        'universite',
+        'ecole',
+        'etat_physique',
+        'filiere',
+        'anne_universitaire',
+        'profession_conjoint',
+        'matricule',
+        'cni_adherent',
+        'mention',
+        'anne_bac',
+        'note',
+        'ville',
+        'nbr_freres',
+        'parents_deces',
+        'deces', 
+        'promotion', 
+        'salaire',
+        'salaire_conjoint',
+        'age',
+        'profession',
+        'region_id_etud',
+        'province_id_etud');
+     
+         
+     }
+     return   $lists;
     }
 }

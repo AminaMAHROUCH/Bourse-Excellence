@@ -103,186 +103,186 @@
                             <div class="col-lg-7 mt-5 ">
                                 <div class="row">
                                     <div class="col-lg-4 text-bold">الاسم الكامل :</div>
-                                    <div> <input class="col-lg-8" value="{{ $info->nom_prenom }}" readonly></div>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->nom_prenom }}"></div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold">الاسم الكامل بالعربية:</div>
-                                    <div><input class="col-lg-8" value="{{ $info->nom_prenomArab }}" readonly></div>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->nom_prenomArab }}"></div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold"> رقم مسار :</div>
-                                    <div><input class="col-lg-8" value="{{ $info->cne }}" readonly>
-                                    </div>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->cne }}"></div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold">رقم البطاقة الوطنية :</div>
-                                    <div><input class="col-lg-8" value="{{ $info->cni }}" readonly></div>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->cni }}"></div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold">الحالة الجسدية :</div>
-                                    <div><input class="col-lg-8" value="{{ $info->etat_physique }}" readonly></div>
+                                    <div class="col-lg-8">
+                                        <input class="form-control" value="{{ $info->etat_physique }}">
+                                    </div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold"> الجنس :</div>
-                                    <div><input class="col-lg-8" value="{{ $info->sexe }}" readonly></div>
+                                    <div class="col-lg-4">
+                                        <label for=""><input type="text" value="{{ $info->sexe }}" class="form-control" name="sexe"></label>
+                                    </div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold">مكان الازدياد :</div>
-                                    <div><input class="col-lg-8" value="{{ $info->lieu_naissance }}" readonly></div>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->lieu_naissance }}" ></div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold">تاريخ الازدياد :</div>
-                                    <div><input class="col-lg-8" value="{{ $info->date_naissance }}" readonly></div>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->date_naissance }}" ></div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold">العنوان :</div>
-                                    <div><input class="col-lg-8" value="{{ $info->adresse }}" readonly></div>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->adresse }}"></div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold">رقم الهاتف 1 :</div>
-                                    <div><input class="col-lg-8" value="{{ $info->telephone_1 }}" readonly></div>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->telephone_1 }}"></div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold">رقم الهاتف 2 :</div>
-                                    <div><input class="col-lg-8" value="{{ $info->telephone_2 }}" readonly></div>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->telephone_2 }}"></div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold">البريد الالكتروني:</div>
-                                    <div><input class="col-lg-8" value="{{ $info->email }}" readonly></div>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->email }}"></div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold"> مسلك البكالوريا : </div>
-                                    <div><input class="col-lg-8" value="{{ $info->filiereBac }}" readonly></div>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->filiereBac }}"></div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold"> ميزة البكالوريا : </div>
-                                    <div><input class="col-lg-8" value="{{ $info->mention }}" readonly></div>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->mention }}"></div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold"> سنة الحصول على البكالوريا </div>
-                                    <div><input class="col-lg-8" value="{{ $info->anne_bac }}" readonly></div>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->anne_bac }}"></div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold"> معدل البكالوريا : </div>
-                                    <div><input class="col-lg-8" value="{{ $info->note }}" readonly></div>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->note }}"></div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold"> الثانوية:</div>
-                                    <div><input class="col-lg-8" value="{{ $info->lycee }}" readonly></div>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->lycee }}" ></div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold"> المؤسسة:</div>
-                                    <div><input class="col-lg-8" value="{{ $info->ecole }}" readonly></div>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->ecole }}"></div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold"> الجامعة:</div>
-                                    <div><input class="col-lg-8" value="{{ $info->universite }}" readonly></div>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->universite }}"></div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold"> الشعبة الجامعية :</div>
-                                    <div><input class="col-lg-8" value="{{ $info->filiere }}" readonly></div>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->filiere }}"></div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold"> السنة الجامعية:</div>
-                                    <div><input class="col-lg-8" value="{{ $info->anneUniversitaire }}" readonly>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->anne_universitaire }}">
                                     </div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold"> مدة الدراسة الجامعية:</div>
-                                    <div><input class="col-lg-8" value="{{ $info->duree_etude }}" readonly></div>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->duree_etude }}"></div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold">الاسم الكامل للمنخرط :</div>
-                                    <div><input class="col-lg-8" value="{{ $info->nom_prenom_adherent }}" readonly>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->nom_prenom_adherent }}">
                                     </div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold">الاسم الكامل للمنخرط بالعربية :</div>
-                                    <div><input class="col-lg-8" value="{{ $info->nom_prenom_adherentAr }}" readonly>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->nom_prenom_adherentAr }}">
                                     </div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold">رقم الانخراط :</div>
-                                    <div><input class="col-lg-8" value="{{ $info->matricule }}" readonly></div>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->matricule }}"></div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold">رقم البطاقة الوطنية للمنخرط :</div>
-                                    <div><input class="col-lg-8" value="{{ $info->cni_adherent }}" readonly></div>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->cni_adherent }}"></div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold">مهنة المنخرط:</div>
-                                    <div><input class="col-lg-8" value="{{ $info->profession_adherent }}" readonly>
-                                    </div>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->profession_adherent }}"></div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold">هاتف المنخرط:</div>
-                                    <div><input class="col-lg-8" value="{{ $info->telephone_adherent }}" readonly>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->telephone_adherent }}">
                                     </div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold">الاسم الكامل للزوج(ة) :</div>
-                                    <div><input class="col-lg-8" value="{{ $info->nom_prenom_conjoint }}" readonly>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->nom_prenom_conjoint }}">
                                     </div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold">الاسم الكامل للزوج(ة) بالعربية :</div>
-                                    <div><input class="col-lg-8" value="{{ $info->nom_prenom_conjointAr }}" readonly>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->nom_prenom_conjointAr }}">
                                     </div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold">هاتف الزوج(ة):</div>
-                                    <div><input class="col-lg-8" value="{{ $info->telephone_conjoint }}" readonly>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->telephone_conjoint }}">
                                     </div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold">عدد الاخوة :</div>
-                                    <div><input class="col-lg-8" value="{{ $info->nbr_freres }}" readonly></div>
+                                    <div class="col-lg-8" ><input class="form-control" value="{{ $info->nbr_freres }}"></div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold"> احد او ابوين متوفيين :</div>
-                                    <div><input class="col-lg-8" value="{{ $info->parents_deces }}" readonly></div>
+                                    <div class="col-lg-8" >
+                                        <input class="form-control" value="{{ $info->parents_deces }}" readonly>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-lg-4 text-bold"> عنوان الاباء :</div>
-                                    <div><input class="col-lg-8" value="{{ $info->adresse_parents }}" readonly></div>
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col-lg-4 text-bold"> تاريخ التسجيل :</div>
-                                    <div><input class="col-lg-8" value="{{ $info->dateInscription }}" readonly></div>
+                                    <div class="col-lg-8 ">
+                                        <textarea class="form-control">{{ $info->adresse_parents }}</textarea>
+                                    </div>
                                 </div>
                                 <br>
 

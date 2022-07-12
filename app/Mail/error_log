@@ -1,0 +1,24 @@
+[27-May-2022 22:31:32 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Mail\Mailable' not found in /home/amefemaroc/public_html/bourse_excellence/app/Mail/ActualiteMail.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Mail/ActualiteMail.php on line 11
+[27-May-2022 22:31:32 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Mail\Mailable' not found in /home/amefemaroc/public_html/bourse_excellence/app/Mail/EmailForQueuing.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Mail/EmailForQueuing.php on line 10
+[27-May-2022 22:31:32 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Mail\Mailable' not found in /home/amefemaroc/public_html/bourse_excellence/app/Mail/StudentMailId.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Mail/StudentMailId.php on line 10
+[27-May-2022 23:02:00 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Mail\Mailable' not found in /home/amefemaroc/public_html/bourse_excellence/app/Mail/ActualiteMail.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Mail/ActualiteMail.php on line 11
+[27-May-2022 23:02:07 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Mail\Mailable' not found in /home/amefemaroc/public_html/bourse_excellence/app/Mail/ActualiteMail.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Mail/ActualiteMail.php on line 11
+[27-May-2022 23:02:28 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Mail\Mailable' not found in /home/amefemaroc/public_html/bourse_excellence/app/Mail/ActualiteMail.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Mail/ActualiteMail.php on line 11

@@ -1,0 +1,4 @@
+[27-May-2022 22:31:28 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Http\Kernel' not found in /home/amefemaroc/public_html/bourse_excellence/app/Http/Kernel.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Http/Kernel.php on line 7

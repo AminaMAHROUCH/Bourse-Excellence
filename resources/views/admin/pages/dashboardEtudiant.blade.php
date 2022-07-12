@@ -182,26 +182,50 @@
                                                     </div>
                                                 </div>
                                                 <form class="new-added-form"
-                                                    action="{{ url('/boursier/demandeFormation') }}" method="POST">
-
-                                                    <div class="row">
-                                                        <div class="col-12-xxxl col-lg-12 col-12 form-group">
-                                                            <label> نوعها</label>
-                                                            <input type="text" placeholder="" class="form-control"
-                                                                name="type_f">
-                                                        </div>
-                                                        <div class="col-12-xxxl col-lg-12 col-12 form-group">
-                                                            <label>تفاصيل</label>
-                                                            <textarea class="textarea form-control" name="detail_f"
-                                                                id="form-message" rows="8"></textarea>
-                                                        </div>
-
-                                                        <div class="col-12 form-group mg-t-8 mt-3 text-center">
-                                                            <button type="submit" class="btn bg-green">حفظ</button>
-                                                            <button type="reset" class="btn bg-red">مسح</button>
-                                                        </div>
+                                                action="{{ url('/boursier/demandeFormation') }}" method="POST">
+                                                @csrf
+                                                <div class="row">
+                                                    <div class="col-12-xxxl col-lg-6 col-12 form-group">
+                                                        <label> اسم التكوين</label>
+                                                        <input type="text" placeholder="" class="form-control"
+                                                            name="titre_formation">
                                                     </div>
-                                                </form>
+                                                    <div class="col-12-xxxl col-lg-6 col-12 form-group">
+                                                        <label> نوعها</label>
+                                                        <select name="type_f" id="deces" class="form-control">
+                                                            <option value="الإعلاميات">الإعلاميات</option>
+                                                            <option value="اللغات">اللغات</option>
+                                                            <option value="تسيير المقاولات">تسيير المقاولات</option>
+                                                            <option id="np" value="آخـــــر">آخـــــر</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-12-xxxl col-lg-12 col-12 form-group"
+                                                        style="display: none;" id="decesparent">
+                                                        <label> إدخال نوع التكوين</label>
+                                                        <input type="text" placeholder="" id="np" class="form-control"
+                                                            name="type_formation">
+                                                    </div>
+                                                    <div class="col-12-xxxl col-lg-6 col-12 form-group">
+                                                        <label> من</label>
+                                                        <input type="date" placeholder="" class="form-control"
+                                                            name="debut">
+                                                    </div>
+                                                    <div class="col-12-xxxl col-lg-6 col-12 form-group">
+                                                        <label> الى</label>
+                                                        <input type="date" placeholder="" class="form-control"
+                                                            name="fin_s">
+                                                    </div>
+                                                    <div class="col-12-xxxl col-lg-12 col-12 form-group">
+                                                        <label>تفاصيل</label>
+                                                        <textarea class="form-control" rows="8" name="detail_f"
+                                                            id="form-message"></textarea>
+                                                    </div>
+                                                    <div class="col-12 form-group mg-t-8 mt-4 text-center">
+                                                        <button type="submit" class="btn bg-green">حفظ</button>
+                                                        <button type="reset" class="btn bg-red">مسح</button>
+                                                    </div>
+                                                </div>
+                                            </form>
                                             </div>
                                         </div>
                                     </div>
@@ -224,7 +248,7 @@
                                 <div class="modal-header bg-orange">
                                     <form class="new-added-form" action="{{ url('boursier/actualite/' . $item->id) }}"
                                         method="post" enctype="multipart/form-data">
-                                        <h2 class="modal-title" id="exampleModalLabel">فحوى الاعلان</h2>
+                                        <h2 class="modal-title" id="exampleModalLabel">{{ $item->titre }} </h2>
                                 </div>
                                 <div class="modal-body">
                                     <form class="new-added-form" action="{{ url('boursier/actualite/' . $item->id) }}"
@@ -232,8 +256,7 @@
                                         {{ csrf_field() }}
                                         {{ method_field('PUT') }}
                                         <div class="content mt-3 col-12-xxxl col-lg-12 col-12">
-                                            <h6 class="title my-4">{{ $item->titre }}</h6>
-                                            {{ $item->contenu }}
+                                            {!! $item->contenu !!}
                                         </div>
 
                                         <div class="col-12 form-group mg-t-8 mt-4">

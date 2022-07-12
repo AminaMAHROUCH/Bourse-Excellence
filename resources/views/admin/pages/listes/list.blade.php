@@ -2,6 +2,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="stylesheet" href="{{ asset('newFolder/plugins/datatables-bs4/css/dataTables.bootstrap4.css') }}">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <style>
     .titre {
         background-color: #f7f7f7 !important;
@@ -78,7 +79,7 @@
                             <button class="nav-link btn" id="nav-boursiers-tab" data-bs-toggle="tab"
                                 data-bs-target="#boursiers" type="button" role="tab" aria-controls="nav-boursiers"
                                 aria-selected="false" onclick="CLICK(this , 'butn')">الطلبة الممنوحين <span
-                                    class="badge bg-secondary">{{ count($fullCandidatures) + count($intermidiares) }}</span></button>
+                                    class="badge bg-secondary">{{ count($fullCandidatures)}}</span></button>
                             <button class="nav-link btn" id="nav-archives-tab" data-bs-toggle="tab"
                                 data-bs-target="#archives" type="button" role="tab" aria-controls="nav-archives"
                                 aria-selected="false" onclick="CLICK(this , 'butn')">
@@ -89,7 +90,8 @@
                             <button class="nav-link btn" id="nav-exceptions-tab" data-bs-toggle="tab"
                                 data-bs-target="#exceptions" type="button" role="tab" aria-controls="nav-exceptions"
                                 aria-selected="false" onclick="CLICK(this , 'butn')">
-                                exceptions <span class="badge bg-secondary"> {{ count($exception) }} </span></button>
+                                استثناءات
+ <span class="badge bg-secondary"> {{ count($exception) }} </span></button>
 
                         </div>
 
@@ -102,7 +104,8 @@
                                             <li class="nav-item" role="presentation">
                                                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#globale"
                                                     role="tab" aria-controls="globale" aria-selected="true">
-                                                    عامة <span
+                                                    اللائحة الإجمالية
+ <span
                                                         class="badge bg-secondary">{{ count($candidatures) }}</span></a>
                                             </li>
                                             <li class="nav-item" role="presentation">
@@ -121,7 +124,7 @@
                                                 <a class="nav-link" id="contact-tab" data-toggle="tab" href="#confirmer"
                                                     role="tab" aria-controls="confirmer" aria-selected="false">
                                                     مصادق عليها <span
-                                                        class="badge bg-secondary">{{ count($valider) }}</span></a>
+                                                        class="badge bg-secondary">{{ count($fullCandidatures) }}</span></a>
                                             </li>
                                         </ul>
                                         <div class="tab-content mt-3" id="myTabContent">
@@ -137,6 +140,7 @@
                                                             <th> الهاتف 1</th>
                                                             <th colspan="2" class="text-center"> الاجراء</th>
                                                             <th> حالة الطلب</th>
+                                                           <th>إلغاء</th>
                                                             <th> أرشيف</th>
                                                         </tr>
                                                     </thead>
@@ -182,20 +186,28 @@
                                                                         @else
                                                                             <button type="button"
                                                                                 class=" btn btn-sm btn-dark text-white btn-update-status mybtn-{{ $candidature->id }}"
-                                                                                data-id="{{ $candidature->id }}">{{ $candidature->status }}</button>
+                                                                                data-id="{{ $candidature->id }}">مرشح
+</button>
                                                                         @endif
                                                                     @endif
+                                                                </td>
+                                            <td>
+                                                                    <a class="btn btn-secondary"
+                                                                        href="{{ url('resetCandidature/' . $candidature->cni) }}">إلغاء
+</a>
                                                                 </td>
                                                                 <td>
                                                                     @if ($candidature->valider == '1')
                                                                         <button disabled type="button"
                                                                             class=" btn btn-sm text-white btn-update-archiver btn-danger"
-                                                                            data-id="{{ $candidature->id }}">archiver
+                                                                            data-id="{{ $candidature->id }}">أرشفة
+
                                                                         </button>
                                                                     @else
                                                                         <button type="button"
                                                                             class=" btn btn-sm text-white btn-update-archiver btn-danger"
-                                                                            data-id="{{ $candidature->id }}">archiver</button>
+                                                                            data-id="{{ $candidature->id }}">أرشفة
+</button>
                                                                     @endif
                                                                 </td>
                                                             </tr>
@@ -206,9 +218,10 @@
                                                 <div class="row">
                                                     <div class="col-3">
                                                         <button class="btn btn-info " style="color: white">
-                                                            <a href="{{ route('boursier.exportCsv') }}"
+                                                            <a href="{{ route('boursier.exportCsv', "global") }}"
                                                                 style="color: white">
-                                                                <strong>Export Excel</strong>
+                                                                <strong> تحميل القائمة Excel
+</strong>
                                                             </a>
                                                         </button>
                                                     </div>
@@ -283,7 +296,8 @@
                                                                     <td>
                                                                         <button type="button"
                                                                             class=" btn btn-sm text-white btn-update-archiver btn-danger"
-                                                                            data-id="{{ $candidature->id }}">archiver</button>
+                                                                            data-id="{{ $candidature->id }}">أرشفة
+</button>
                                                                     </td>
                                                                 </tr>
                                                             @endif
@@ -291,6 +305,17 @@
 
                                                     </tbody>
                                                 </table>
+                                            <div class="row">
+                                                    <div class="col-3">
+                                                        <button class="btn btn-warning " style="color: white">
+                                                            <a href="{{ route('boursier.exportCsv', "en attente") }}"
+                                                                style="color: white">
+                                                                <strong> تحميل القائمة Excel
+</strong>
+                                                            </a>
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="tab-pane fade table-responsive" id="accepter" role="tabpanel"
                                                 aria-labelledby="contact-tab">
@@ -309,9 +334,9 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <form action="{{ route('boursier.valideCandidat') }}"
-                                                            methode="POST" id="validForm">
-                                                            @csrf
+                             <form action="{{ route('boursier.valideCandidat') }}" methode="POST"
+                                                        id="validForm">
+                                                        @csrf
                                                             @foreach ($candidatures as $candidature)
                                                                 @if ($candidature->status == 'accepter')
                                                        @if ($candidature->rib == '')
@@ -367,7 +392,8 @@
                                                             <td>
                                                                 <button type="button"
                                                                     class=" btn btn-sm text-white btn-update-archiver btn-danger"
-                                                                    data-id="{{ $candidature->id }}">archiver</button>
+                                                                    data-id="{{ $candidature->id }}">أرشفة
+</button>
                                                             </td>
                                                         </tr>
                                                         @else
@@ -423,7 +449,8 @@
                                                             <td>
                                                                 <button type="button"
                                                                     class=" btn btn-sm text-white btn-update-archiver btn-danger"
-                                                                    data-id="{{ $candidature->id }}">archiver</button>
+                                                                    data-id="{{ $candidature->id }}">أرشفة
+</button>
                                                             </td>
                                                         </tr>
                                                         @endif
@@ -432,14 +459,25 @@
                                                         </form>
                                                     </tbody>
                                                 </table>
-                                                <div class="col-3">
-                                                    <button class="btn btn-secondary" style="color: white">
-                                                        <a href="#" style="color: white"
-                                                            onclick="document.getElementById('validForm').submit()">
-                                                            <strong>مصادقة</strong>
-                                                        </a>
-                                                    </button>
+                                                 <div class="row">
+                                                    <div class="col-3">
+                                                        <button class="btn btn-success " style="color: white">
+                                                            <a href="{{ route('boursier.exportCsv', "accepter") }}"
+                                                                style="color: white">
+                                                                <strong> تحميل القائمة Excel
+</strong>
+                                                            </a>
+                                                        </button>
+                                                    </div>
                                                 </div>
+                                              <div class="col-3">
+                                                <button class="btn btn-secondary" style="color: white">
+                                                    <a href="#" style="color: white"
+                                                        onclick="document.getElementById('validForm').submit()">
+                                                        <strong>مصادقة</strong>
+                                                    </a>
+                                                </button>
+                                            </div>
                                             </div>
                                             <div class="tab-pane fade table-responsive" id="confirmer" role="tabpanel"
                                                 aria-labelledby="contact-tab">
@@ -509,6 +547,17 @@
                                                         @endforeach
                                                     </tbody>
                                                 </table>
+                                                 <div class="row">
+                                                    <div class="col-3">
+                                                        <button class="btn btn-secondary " style="color: white">
+                                                            <a href="{{ route('boursier.exportCsv', "valider") }}"
+                                                                style="color: white">
+                                                                <strong> تحميل القائمة Excel
+</strong>
+                                                            </a>
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -544,9 +593,10 @@
                                                                         class="btn btn-warning text-white">exception</button>
                                                                 @elseif($renouvellement->status == 'archiver')
                                                                     <button
-                                                                        class="btn btn-danger text-white">archiver</button>
+                                                                        class="btn btn-danger text-white">أرشفة
+</button>
                                                                 @else
-                                                                    <button class="btn btn-dark">NULL</button>
+                                                                    <button class="btn btn-dark">مرشح</button>
                                                                 @endif
                                                             </td>
                                                             <td>
@@ -574,11 +624,18 @@
                                                 <div class="col-lg-12">
                                                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                                                         <li class="nav-item" role="presentation">
-                                                            <a class="nav-link active" id="home-tab" data-toggle="tab"
-                                                                href="#boursie" role="tab" aria-controls="boursie"
+                                                            <a class="nav-link active" id="home-tab_" data-toggle="tab"
+                                                                href="#boursie_panier" role="tab" aria-controls="boursie_panier"
                                                                 aria-selected="true">
                                                                 الممنوحين <span
                                                                     class="badge bg-secondary">{{ count($fullCandidatures) }}</span></a>
+                                                        </li> 
+                                                        <li class="nav-item" role="presentation">
+                                                            <a class="nav-link" id="home-tab" data-toggle="tab"
+                                                                href="#boursie" role="tab" aria-controls="boursie"
+                                                                aria-selected="true">
+                                                                تعبئة السلة <span
+                                                                    class="badge bg-secondary">{{ count($addCandidatures) }}</span></a>
                                                         </li>
                                                         <li class="nav-item" role="presentation">
                                                             <a class="nav-link" id="profile-tab" data-toggle="tab"
@@ -602,12 +659,12 @@
                                                 </div>
                                             </div>
                                             <div class="tab-content mt-3" id="myTabContent">
-                                                <div class="tab-pane fade show active table-responsive" id="boursie"
+                                                
+                                                    <div class="tab-pane fade show active table-responsive" id="boursie_panier"
                                                     role="tabpanel" aria-labelledby="home-tab">
-                                               <table id="example21" class="table table-bordered table-striped">
+                                                <table id="example50" class="table table-bordered table-striped">
                                                         <thead>
                                                             <tr role="row">
-                                                                <th>تعبئة السلة</th>
                                                                 <th>الفوج</th>
                                                                 <th>الاسم الكامل</th>
                                                                 <th>ر.ب.و</th>
@@ -618,24 +675,67 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <form action="{{ route('boursier.panier') }}" methode="POST"
-                                                                id="addToPanier">
-                                                                @csrf
+
                                                                 @foreach ($fullCandidatures as $fullCandidature)
                                                                     <tr role="row">
-                                                                        <td>
-                                                                            <input type="checkbox" name="row[]"
-                                                                                value="{{ $fullCandidature->id }}" />
-                                                                        </td>
-                                <td>الفوج:{{ $fullCandidature->promotion }}</td>
-                                <td>{{ $fullCandidature->nom_prenom }}</td>
-                                <td>{{ $fullCandidature->cni }}</td>
-                                <td>{{ $fullCandidature->rib }}</td>
-                                <td>{{ $fullCandidature->anne_universitaire }}
+                                                                    
+                                                <td>الفوج:{{ $fullCandidature->promotion }}</td>
+                                                <td>{{ $fullCandidature->nom_prenom }}</td>
+                                                <td>{{ $fullCandidature->cni }}</td>
+                                                <td>{{ $fullCandidature->rib }}</td>
+                                                <td>{{ $fullCandidature->anne_universitaire }}
                                                                         </td>
                                                                         <td>{{ $fullCandidature->status }}</td>
                                                                         <td>{{ $fullCandidature->RaisonNonPaiment }}
                                                                         </td>
+                                                                    </tr>
+                                                                @endforeach
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+
+                                                <div class="tab-pane fade show table-responsive" id="boursie"
+                                                    role="tabpanel" aria-labelledby="home-tab">
+                                               <table  class="table table-bordered table-striped">
+                                                        <thead>
+                                                            <tr role="row">
+                                                                <th>  <input type="checkbox" id="selectAll" />
+                                                                تعبئة السلة</th>
+                                                                <th>الفوج</th>
+                                                                <th>الاسم الكامل</th>
+                                                                <th>ر.ب.و</th>
+                                                                <th> رقم الحساب  </th>
+                                                                <th>السنة الدراسية</th>
+                                       
+                                                               
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <form action="{{ route('boursier.panier') }}" methode="POST"
+                                                                id="addToPanier">
+                                                                @csrf
+                                                                @foreach ($addCandidatures as $addCandidature)
+                                                                    <tr role="row">
+                                                                        <td>
+                                         @php 
+                                        ($rib = strlen($addCandidature->rib))
+                                        
+                                        @endphp
+                                         @if($rib == 24 )
+                                                                            <input type="checkbox" name="row[]"
+                                                                                value="{{ $addCandidature->id }}" />
+                                        @else
+                                        <span>-</span>
+                                        @endif
+                                                                        </td>
+                                <td>الفوج:{{ $addCandidature->promotion }}</td>
+                                <td>{{ $addCandidature->nom_prenom }}</td>
+                                <td>{{ $addCandidature->cni }}</td>
+                                <td>{{ $addCandidature->rib }}</td>
+                                <td>{{ $addCandidature->anne_universitaire }}
+                                                                        </td>
+                                                                      
                                                                     </tr>
                                                                 @endforeach
                                                             </form>
@@ -652,9 +752,10 @@
                                                 </div>
                                                 <div class="tab-pane fade " id="etatInter" role="tabpanel"
                                                     aria-labelledby="profile-tab">
-                                                    <table id="example14" class="table table-bordered table-striped">
+                                                    <table class="table table-bordered table-striped">
                                                         <thead>
                                                             <tr role="row">
+                                                                <th> <input type="checkbox" id="selectAll1" /></th>
                                                                 <th>الاسم الكامل</th>
                                                                 <th>ر.ب.و</th>
                                                                 <th>رقم الحساب</th>
@@ -664,26 +765,40 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+         <form methode="POST" action="{{ url('boursier/sendToPanier/000') }}" 
+                            id="selectToPanier">
+                                                                @csrf
                                                             @foreach ($intermidiares as $intermidiare)
-                                                                <tr>
+                                            @if($intermidiare->affected == 1)
+                                                                <tr style="background-color:#383838; color:white; ">
+                                <td></td>   
                                                                     <td>{{ $intermidiare->nom_prenom }}</td>
                                                                     <td>{{ $intermidiare->cni }}</td>
                                                                     <td>{{ $intermidiare->rib }}</td>
                                                                     <td>{{ $intermidiare->anne_universitaire }}</td>
                                                                     <td>{{ $intermidiare->montant }}</td>
                                                                     <td>
-                                                                        <form
-                                                                            action="{{ route('boursier.intemidiare.destroy', $intermidiare->id) }}"
-                                                                            method="post">
-                                                                            {{ csrf_field() }}
-                                                                            {{ method_field('DELETE') }}
-                                                                            <button class="btn" type="submit"><i
-                                                                                    class="fas fa-trash text-red"></i></button>
-                                                                        </form>
+                                                                       affecté
                                                                     </td>
                                                                 </tr>
+                                        @else
+                                             <tr>
+                                                 <td> <input type="checkbox" name="select_list[]"
+                                                                                value="{{ $intermidiare->id }}" /></td>
+                                                                    <td>{{ $intermidiare->nom_prenom }}</td>
+                                                                    <td>{{ $intermidiare->cni }}</td>
+                                                                    <td>{{ $intermidiare->rib }}</td>
+                                                                    <td>{{ $intermidiare->anne_universitaire }}</td>
+                                                                    <td>{{ $intermidiare->montant }}</td>
+                                                                    <td>
+                                         <button class=" btn deleteRecord" data-id="{{ $intermidiare->cni }}" type="button" name="deleting"><i
+                                                                                    class="fas fa-trash text-red"></i></button
+
+                                                                    </td>
+                                                                </tr>
+                                        @endif
                                                             @endforeach
-                                                        </tbody>
+                                                            </form>                                                        </tbody>
                                                         <tfoot>
                                                             <tr>
                                                                 <td colspan="5">
@@ -692,9 +807,11 @@
                                                                         الى قائمة
                                                                         الأداء</a>
                                                                     <button class="btn btn-success btn-sm">
-                                                                        <a href="{{ url('boursier/sendToPanier/000') }}"
-                                                                            class="text-white">
-                                                                            ارسال الى السلة</a></button>
+                    <a href="#" style="color: white"
+                                                                onclick="document.getElementById('selectToPanier').submit()">
+                                                                <strong>إرسال إلى السلة</strong>
+                                                            </a>
+                                              </button>
                                                                     <button type="button" class="btn btn-sm btn-primary"
                                                                         data-toggle="modal"
                                                                         data-target="#exampleModalCenter">
@@ -708,9 +825,10 @@
                                                 </div>
                                                 <div class="tab-pane fade " id="testInter" role="tabpanel"
                                                     aria-labelledby="test-tab">
-                                                    <table id="example30" class="table table-bordered table-striped">
+                                                    <table  class="table table-bordered table-striped">
                                                         <thead>
                                                             <tr role="row">
+                                                                 <th> <input type="checkbox" id="selectAll2" /></th>
                                                                 <th>الاسم الكامل</th>
                                                                 <th>ر.ب.و</th>
                                                                 <th>رقم الحساب</th>
@@ -720,24 +838,40 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                <form methode="POST" action="{{ url('boursier/sendToPanier/350') }}" 
+                            id="selectToPanier1">
+                                                                @csrf
                                                             @foreach ($intermidiaresBB as $intermidiare)
-                                                                <tr>
+                                        @if($intermidiare->affected == 1)
+                                                                <tr style="background-color:#383838; color:white; ">
+                                                                <td></td>
                                                                     <td>{{ $intermidiare->nom_prenom }}</td>
                                                                     <td>{{ $intermidiare->cni }}</td>
                                                                     <td>{{ $intermidiare->rib }}</td>
                                                                     <td>{{ $intermidiare->anne_universitaire }}</td>
                                                                     <td>{{ $intermidiare->montant }}</td>
                                                                     <td>
-                                                                        <form
-                                                                            action="{{ route('boursier.intemidiare.destroy', $intermidiare->id) }}"
-                                                                            method="post">
-                                                                            {{ csrf_field() }}
-                                                                            {{ method_field('DELETE') }}
-                                                                            <button class="btn" type="submit"><i
-                                                                                    class="fas fa-trash text-red"></i></button>
-                                                                        </form>
+                                                                   affecté
                                                                     </td>
                                                                 </tr>
+                                    @else
+                                     <tr >
+                                           <td> <input type="checkbox" name="select_list[]"
+                                                                                value="{{ $intermidiare->id }}" /></td>
+                                                                
+                                                                    <td>{{ $intermidiare->nom_prenom }}</td>
+                                                                    <td>{{ $intermidiare->cni }}</td>
+                                                                    <td>{{ $intermidiare->rib }}</td>
+                                                                    <td>{{ $intermidiare->anne_universitaire }}</td>
+                                                                    <td>{{ $intermidiare->montant }}</td>
+                                                                     <td>
+                                         <button class=" btn deleteRecord" data-id="{{ $intermidiare->cni }}" type="button" name="deleting"><i
+                                                                                    class="fas fa-trash text-red"></i></button
+
+                                                                    </td>
+                                                                    </td>
+                                                                </tr>
+                                    @endif
                                                             @endforeach
                                                         </tbody>
                                                         <tfoot>
@@ -748,9 +882,11 @@
                                                                         الى قائمة
                                                                         الأداء</a>
                                                                     <button class="btn btn-success btn-sm">
-                                                                        <a href="{{ url('boursier/sendToPanier/350') }}"
-                                                                            class="text-white">
-                                                                            ارسال الى السلة</a></button>
+                    <a href="#" style="color: white"
+                                                                onclick="document.getElementById('selectToPanier1').submit()">
+                                                                <strong>إرسال إلى السلة</strong>
+                                                            </a>
+                                              </button>on>
                                                                     <button type="button" class="btn btn-sm btn-primary"
                                                                         data-toggle="modal"
                                                                         data-target="#exampleModalCenter">
@@ -779,17 +915,20 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="{{ route('boursier.addMonatnt') }}" method="post">
-                                                        @csrf
+            <!--<form action="{{ route('boursier.addMonatnt') }}" method="post">-->
+            <!--                                            @csrf-->
                                                         <input type="number" name="montant"
-                                                            class="form-control text-center">
+                                                            class="form-control text-center" id="montant">
+                                                             <p style="color: red; font-size:15px;" id="msgErr1">يجب إدخال مبلغ
+                                                        مخالف ل 0 دهم
+                                                    </p>
                                                         <div class="mt-2 text-center">
                                                             <a class="btn bg-danger btn-model"
                                                                 data-dismiss="modal">إلغاء</a>
-                                                            <button class="btn bg-success btn-model"
-                                                                type="submit">إضافة</button>
+                                                            <button class="btn bg-success btn-model clMontant"
+                                                                type="button">إضافة</button>
                                                         </div>
-                                                    </form>
+                                                    <!--</form>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -882,7 +1021,8 @@
                                                                 <td>ijjrae</td>
                                                                 <td>
                                                                     <a class="btn btn-danger"
-                                                                        href="{{ url('reset/' . $candidature->cni) }}">reset</a>
+                                                                        href="{{ url('reset/' . $candidature->cni) }}">إلغاء
+</a>
                                                                 </td>
                                                             </tr>
 
@@ -974,9 +1114,10 @@
                                                             <button class="btn btn-primary"
                                                                 style="padding: 0; border: none; background: none;"
                                                                 type="button" data-toggle="modal"
-                                                                data-target="#modal-show-{{ $candidature->id }}"
+                                                                data-target="#modal-show-{{ $exc->id }}"
                                                                 data-id="{{ $exc->id }}">
-                                                                Reset
+                                                                إلغاء
+
                                                             </button>
                                                         </td>
                                                     </tr>
@@ -1109,68 +1250,271 @@
 
 
     <script>
+    
+    
         $(function() {
-            $('#example10').DataTable();
+            $('#example10').dataTable({
+"oLanguage": {
+    "sSearch": "البحث",
+    "sLengthMenu": "أظهر _MENU_طلب",
+    "oPaginate": {
+           "sNext": "اللاحق",
+           "sPrevious": "السابق",
+           
+         },
+         
+     "sInfo": "Got a total of _TOTAL_ entries to show (_START_ to _END_)",
+     "sEmptyTable": "لا توجد معطيات في هذه الصفحة أو هي في طور التحديث "
+    
+}
+});
         });
     </script>
         <script>
         $(function() {
-            $('#example30').DataTable();
+            $('#example30').dataTable({
+"oLanguage": {
+    "sSearch": "البحث",
+    "sLengthMenu": "أظهر _MENU_طلب",
+    "oPaginate": {
+           "sNext": "اللاحق",
+           "sPrevious": "السابق",
+           
+         },
+         
+     "sInfo": "Got a total of _TOTAL_ entries to show (_START_ to _END_)",
+     "sEmptyTable": "لا توجد معطيات في هذه الصفحة أو هي في طور التحديث "
+    
+}
+});
         });
     </script>
     <script>
         $(function() {
-            $('#example11').DataTable();
+            $('#example11').dataTable({
+"oLanguage": {
+    "sSearch": "البحث",
+    "sLengthMenu": "أظهر _MENU_طلب",
+    "oPaginate": {
+           "sNext": "اللاحق",
+           "sPrevious": "السابق",
+           
+         },
+         
+     "sInfo": "Got a total of _TOTAL_ entries to show (_START_ to _END_)",
+     "sEmptyTable": "لا توجد معطيات في هذه الصفحة أو هي في طور التحديث "
+    
+}
+});
         });
     </script>
     <script>
         $(function() {
-            $('#example12').DataTable();
+            $('#example12').dataTable({
+"oLanguage": {
+    "sSearch": "البحث",
+    "sLengthMenu": "أظهر _MENU_طلب",
+    "oPaginate": {
+           "sNext": "اللاحق",
+           "sPrevious": "السابق",
+           
+         },
+         
+     "sInfo": "Got a total of _TOTAL_ entries to show (_START_ to _END_)",
+     "sEmptyTable": "لا توجد معطيات في هذه الصفحة أو هي في طور التحديث "
+    
+}
+});
         });
     </script>
     <script>
         $(function() {
-            $('#example13').DataTable();
+            $('#example50').dataTable({
+"oLanguage": {
+    "sSearch": "البحث",
+    "sLengthMenu": "أظهر _MENU_طلب",
+    "oPaginate": {
+           "sNext": "اللاحق",
+           "sPrevious": "السابق",
+           
+         },
+         
+     "sInfo": "Got a total of _TOTAL_ entries to show (_START_ to _END_)",
+     "sEmptyTable": "لا توجد معطيات في هذه الصفحة أو هي في طور التحديث "
+    
+}
+});
+        });
+    </script>
+      <script>
+        $(function() {
+            $('#example51').dataTable({
+"oLanguage": {
+    "sSearch": "البحث",
+    "sLengthMenu": "أظهر _MENU_طلب",
+    "oPaginate": {
+           "sNext": "اللاحق",
+           "sPrevious": "السابق",
+           
+         },
+         
+     "sInfo": "Got a total of _TOTAL_ entries to show (_START_ to _END_)",
+     "sEmptyTable": "لا توجد معطيات في هذه الصفحة أو هي في طور التحديث "
+    
+}
+});
         });
     </script>
     <script>
         $(function() {
-            $('#example13').DataTable();
+            $('#example13').dataTable({
+"oLanguage": {
+    "sSearch": "البحث",
+    "sLengthMenu": "أظهر _MENU_طلب",
+    "oPaginate": {
+           "sNext": "اللاحق",
+           "sPrevious": "السابق",
+           
+         },
+         
+     "sInfo": "Got a total of _TOTAL_ entries to show (_START_ to _END_)",
+     "sEmptyTable": "لا توجد معطيات في هذه الصفحة أو هي في طور التحديث "
+    
+}
+});
         });
     </script>
     <script>
         $(function() {
-            $('#example1').DataTable();
+            $('#example1').dataTable({
+"oLanguage": {
+    "sSearch": "البحث",
+    "sLengthMenu": "أظهر _MENU_طلب",
+    "oPaginate": {
+           "sNext": "اللاحق",
+           "sPrevious": "السابق",
+           
+         },
+         
+     "sInfo": "Got a total of _TOTAL_ entries to show (_START_ to _END_)",
+     "sEmptyTable": "لا توجد معطيات في هذه الصفحة أو هي في طور التحديث "
+    
+}
+});
         });
     </script>
     <script>
         $(function() {
-            $('#example2').DataTable();
+            $('#example2').dataTable({
+"oLanguage": {
+    "sSearch": "البحث",
+    "sLengthMenu": "أظهر _MENU_طلب",
+    "oPaginate": {
+           "sNext": "اللاحق",
+           "sPrevious": "السابق",
+           
+         },
+         
+     "sInfo": "Got a total of _TOTAL_ entries to show (_START_ to _END_)",
+     "sEmptyTable": "لا توجد معطيات في هذه الصفحة أو هي في طور التحديث "
+    
+}
+});
         });
     </script>
     <script>
         $(function() {
-            $('#example3').DataTable();
+            $('#example3').dataTable({
+"oLanguage": {
+    "sSearch": "البحث",
+    "sLengthMenu": "أظهر _MENU_طلب",
+    "oPaginate": {
+           "sNext": "اللاحق",
+           "sPrevious": "السابق",
+           
+         },
+         
+     "sInfo": "Got a total of _TOTAL_ entries to show (_START_ to _END_)",
+     "sEmptyTable": "لا توجد معطيات في هذه الصفحة أو هي في طور التحديث "
+    
+}
+});
         });
     </script>
     <script>
         $(function() {
-            $('#example14').DataTable();
+            $('#example14').dataTable({
+"oLanguage": {
+    "sSearch": "البحث",
+    "sLengthMenu": "أظهر _MENU_طلب",
+    "oPaginate": {
+           "sNext": "اللاحق",
+           "sPrevious": "السابق",
+           
+         },
+         
+     "sInfo": "Got a total of _TOTAL_ entries to show (_START_ to _END_)",
+     "sEmptyTable": "لا توجد معطيات في هذه الصفحة أو هي في طور التحديث "
+    
+}
+});
         });
     </script>
     <script>
         $(function() {
-            $('#example5').DataTable();
+            $('#example5').dataTable({
+"oLanguage": {
+    "sSearch": "البحث",
+    "sLengthMenu": "أظهر _MENU_طلب",
+    "oPaginate": {
+           "sNext": "اللاحق",
+           "sPrevious": "السابق",
+           
+         },
+         
+     "sInfo": "Got a total of _TOTAL_ entries to show (_START_ to _END_)",
+     "sEmptyTable": "لا توجد معطيات في هذه الصفحة أو هي في طور التحديث "
+    
+}
+});
         });
     </script>
     <script>
         $(function() {
-            $('#example6').DataTable();
+            $('#example6').dataTable({
+"oLanguage": {
+    "sSearch": "البحث",
+    "sLengthMenu": "أظهر _MENU_طلب",
+    "oPaginate": {
+           "sNext": "اللاحق",
+           "sPrevious": "السابق",
+           
+         },
+         
+     "sInfo": "Got a total of _TOTAL_ entries to show (_START_ to _END_)",
+     "sEmptyTable": "لا توجد معطيات في هذه الصفحة أو هي في طور التحديث "
+    
+}
+});
         });
     </script>
     <script>
         $(function() {
-            $('#example20').DataTable();
+            $('#example20').dataTable({
+"oLanguage": {
+    "sSearch": "البحث",
+    "sLengthMenu": "أظهر _MENU_طلب",
+    "oPaginate": {
+           "sNext": "اللاحق",
+           "sPrevious": "السابق",
+           
+         },
+         
+     "sInfo": "Got a total of _TOTAL_ entries to show (_START_ to _END_)",
+     "sEmptyTable": "لا توجد معطيات في هذه الصفحة أو هي في طور التحديث "
+    
+}
+});
         });
     </script>
 @endsection
@@ -1182,6 +1526,7 @@ integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R
 integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
 </script>
 <script>
+
     function CLICK(btn, cls) {
         var btns = document.getElementsByClassName(cls);
         if (cls == "btn") {
@@ -1297,5 +1642,83 @@ integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0Ec
                 }
             });
         });
+        //
+           $('#selectAll').click(function (e) {
+        $(this).closest('table').find('td input:checkbox').prop('checked', this.checked);
+        
     });
+     $('#selectAll1').click(function (e) {
+        $(this).closest('table').find('td input:checkbox').prop('checked', this.checked);
+     });
+          $('#selectAll2').click(function (e) {
+        $(this).closest('table').find('td input:checkbox').prop('checked', this.checked);
+          });
+    });
+</script>
+<script>
+ 
+    $(function() {
+           $('#montant').keyup(function() {
+               var txtlen = $(this).val();
+               console.log(txtlen);
+               if (txtlen == 0) {
+                $('#msgErr1').slideDown();
+                }else{
+                    $('#msgErr1').slideUp();  
+                }
+ 
+           });
+       });
+      
+</script>
+<script>
+     jQuery(document).ready(async function(){
+         $(".deleteRecord").click(function () {
+
+         var x = confirm("هل أنت متأكد أنك تريد حذف?");
+         if (x) {
+             var cni = $(this).data("id");
+             var token = $("meta[name='csrf-token']").attr("content");
+
+             $.ajax({
+                 type: 'get',
+                 url: "intemidiare/destroy/" + cni,
+                 data: {
+                     "cni": cni,
+                     "_token": token,
+                 },
+                 success: function (data) {
+                     location.reload(true);
+                 }
+             });
+         } else {
+             return false;
+         }
+
+     });
+       });
+</script>
+<script>
+     jQuery(document).ready(async function(){
+         $(".clMontant").click(function () {
+
+         
+             var montant = $('#montant').val();
+             var token = $("meta[name='csrf-token']").attr("content");
+
+             $.ajax({
+                 type: 'post',
+                 url: "addMonatnt",
+                 data: {
+                     "montant": montant,
+                     "_token": token,
+                 },
+                 success: function (data) {
+                     location.reload(true);
+
+                 }
+             });
+         
+     });
+       });
 </script>

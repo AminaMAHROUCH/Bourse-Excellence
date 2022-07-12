@@ -48,6 +48,9 @@ class CandidatureController extends Controller
         $exception= Exception::all();
         $renouvellements= Renouvellement::all();  
         $fullCandidatures = FullCandidature::all();
+        $coun = count($fullCandidatures);
+        $addCandidatures = FullCandidature::where('panier', 0)->get();
+
         $candidats= Candidature::where('status', 'archiver')->get();
         $etudiantRejeters= Renouvellement::where('status', 'archiver')->get(); 
         $intermidiaresBB= Intermediaire::where('rib', 'like', '350%')->get();
@@ -56,7 +59,7 @@ class CandidatureController extends Controller
         $intermidiares= Intermediaire::whereNotIn('rib', $help)->get();
     
 
-        return view("admin.pages.listes.list", compact('candidatures','renouvellements','exception','fullCandidatures','etudiantRejeters','candidats', 'attente', 'accepter', 'valider', 'intermidiares', 'intermidiaresBB')); 
+        return view("admin.pages.listes.list", compact('candidatures','renouvellements','exception','fullCandidatures', 'addCandidatures','etudiantRejeters','candidats', 'attente', 'accepter', 'valider', 'intermidiares', 'intermidiaresBB', 'coun')); 
     }
 
 
@@ -145,7 +148,11 @@ class CandidatureController extends Controller
         $candidature->telephone_2  = $request->input('telephone_2');  
         $candidature->etat_physique  = $request->input('etat');
         $candidature->deces  = $request->input('deces');
+        if($request->input('deces')== 'لا'){
+            $candidature->parents_deces  = 'أبوين على قيد الحياة';
+        }else{
         $candidature->parents_deces  = $request->input('parents_deces');
+        }
         $candidature->nbr_freres  = $request->input('nbre_freres');
         $candidature->region_id_etud  = $request->input('region');
         $candidature->province_id_etud  = $request->input('province'); 
@@ -299,6 +306,7 @@ class CandidatureController extends Controller
                 break;
             case 'step_2': 
                 $this->validate($request, [
+                    'photo' =>  'max:1024',
                     'email'        => 'required|unique:be_candidatures',
                     'cni'      => 'required|unique:be_candidatures',
                     'full_nameArab'=> 'required',
@@ -310,6 +318,7 @@ class CandidatureController extends Controller
                     'date_naissance' => 'required'
                 ],
                 [
+                    'photo.max' => 'يجب أن لايتجاوز حجم الصورة 1MO',
                     'full_nameArab.required' => 'المرجو إدخال اسم المترشح باللغة العربية',
                     'email.required'        => 'المرجو إدخال البريد الإلكتروني',
                     'email.unique'        => 'سبق استعمال هذا البريد الإلكتروني',
@@ -320,7 +329,8 @@ class CandidatureController extends Controller
                     'sexe.required' => 'المرجو تحديد جنس المترشح',
                     'region.required' => 'المرجو تحديد الجهة',
                     'province.required' => 'المرجو تحديد الإقليم',
-                    'date_naissance.required' => 'المرجو تحديد تاريخ الازدياد'
+                    'date_naissance.required' => 'المرجو تحديد تاريخ الازدياد',
+
                 ]);
                 break;
             case 'step_3': 
@@ -566,11 +576,11 @@ class CandidatureController extends Controller
         //
     }
 
-    public function exportCsv(Request $request)
+    public function exportCsv($status)
     {  
         $curTime = new \DateTime();
         $year= $curTime->format('Y');
-        return (new CandiatureExport())->download('candiature_boursier_Excellence'.$year.'.xlsx') ; 
+        return (new CandiatureExport($status))->download('candiature_boursier_Excellence'.$year.'.xlsx') ; 
         // }else{
         //     return redirect()->back()->withErrors(['الرجاء تحديد مرشح واحد على الأقل']);;
         // }
@@ -623,7 +633,7 @@ class CandidatureController extends Controller
      public function valideCandidat(Request $request){
        
         //change value of valider column
-        $ids = $request->input('row');  
+        $ids = $request->input('row'); 
         if(count((array)$ids)>0){
             $candidats= Candidature::whereIn('id', $ids)->get();
             foreach ($candidats as $candidat) {
@@ -645,7 +655,7 @@ class CandidatureController extends Controller
                          
                         //insert in table bourse
                         $etudBourse= Bourse::create([
-                            'anne_universitaire' => date('Y').'/'.$newDateTime->format('Y') ,
+                            'anne_universitaire' =>  $etuduant->anne_universitaire,
                             'cni' => $etuduant->cni,
                             'status'=> 'oui',
                             'promotion' => $etuduant->promotion,
@@ -658,7 +668,7 @@ class CandidatureController extends Controller
                             'cni' => $etuduant->cni,
                             'nom_prenom' => $etuduant->nom_prenom,
                             'rib' => $etuduant->rib,
-                            'anne_universitaire' => date('Y').'/'.$newDateTime->format('Y'),
+                            'anne_universitaire' => $etuduant->anne_universitaire,
                             'promotion' => $etuduant->promotion,
                         ]);
                     
@@ -693,7 +703,15 @@ class CandidatureController extends Controller
         return redirect('/boursier/liste') ; 
     }
 
-    
+     function resetCandidature(Request $request , $cni )
+    {   
+        $candidature = Candidature::where('cni',$cni)->first() ;   
+        $candidature->status = "NULL" ;  
+        $candidature->valider= 0;
+        $candidature->save() ; 
+        return redirect('/boursier/liste') ; 
+    }
+
 
 
 

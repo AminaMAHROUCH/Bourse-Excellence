@@ -28,7 +28,7 @@ class RenouvellementController extends Controller
     public function getRenouvellement ()
     {
         $inscription = Contorole::where('nom_fonction','اعادة التسجيل')->first() ; 
-        $list = Renouvellement::where('cni',Auth::user()->cni)->first() ;  
+        $list = Renouvellement::withoutGlobalScopes()->where('cni',Auth::user()->cni)->first() ;  
         return view('admin.pages.inscription.reinscriptionChange' ,compact('list','inscription'));
     }
     
@@ -40,14 +40,18 @@ class RenouvellementController extends Controller
 
     function store (StoreRenouvellementRequest $request)
  {
-        $student= Student::where('cne', Auth::user()->cne)->first();
+      
+       
+        $student= DB::table('be_students')->where('cni', Auth::user()->cni)->first();
+        //dd($student);
         $newDateTime = Carbon::now()->addYears(1);
         $renouv = new Renouvellement() ;
         $renouv->cne = Auth::user()->cne ; 
         $renouv->cni = Auth::user()->cni ;
         $renouv->nom_prenom = Auth::user()->name;
         $renouv->universite = $request->input('universite') ;
-        $renouv->anne_universitaire = date('Y').'/'.$newDateTime->format('Y'); 
+        $renouv->anne_universitaire = "2021/2022";
+        //date('Y').'/'.$newDateTime->format('Y'); 
         $renouv->ecole = $request->input('school') ;
         $renouv->justification = $request->input('justification');
         $renouv->numero_compte = $request->input('numero_compte');
@@ -56,8 +60,9 @@ class RenouvellementController extends Controller
         if($request->file('attestation'))
         {
             $attestation = $request->file('attestation');
-            $filename = time() . '.' .  $attestation->getClientOriginalExtension();
+            $filename = time().'.'. $attestation->getClientOriginalExtension();
             $filePath = public_path() . '/images';
+            //dd(public_path() . '/images');
             $attestation->move($filePath, $filename);
             $renouv->attestation  = $filename;
         }
@@ -70,14 +75,23 @@ class RenouvellementController extends Controller
             $attestation_reinscription->move($filePath2, $filename2);
             $renouv->attestation_reinscription  = $filename2;
         }
-
+        
+         if($request->file('attestation_rib'))
+        {
+            $attestation_rib = $request->file('attestation_rib');
+            $filename3 = time() . '_.' .  $attestation_rib->getClientOriginalExtension();
+            
+            $filePath3 = public_path() . '/images';
+            $attestation_rib->move($filePath3, $filename3);
+            $renouv->attestation_rib  = $filename3;
+        }
         $renouv->save() ; 
         return redirect("boursier/reinscription/modification");
     }
 
     function update(Request $request) {
 
-        $renouv= Renouvellement::where('cni', Auth::user()->cni)->first();
+        $renouv= Renouvellement::withoutGlobalScopes()->where('cni', Auth::user()->cni)->first();
         $renouv->universite = $request->input('universite') ; 
         $renouv->ecole = $request->input('school') ;
         $renouv->justification = $request->input('justification');
@@ -89,18 +103,25 @@ class RenouvellementController extends Controller
             $renouv->attestation = $name; 
         }
         if ($request->file('attestation_reinscription')) {
-            $name = rand().'_'.$request->file('attestationreinscription')->getClientOriginalExtension();
+            $name = rand().'_'.$request->file('attestation_reinscription')->getClientOriginalExtension();
             $filePath = public_path() . '/images';
-            $request->file('attestationreinscription')->move($filePath, $name);
-            $renouv->attestationreinscription = $name; 
+            $request->file('attestation_reinscription')->move($filePath, $name);
+            $renouv->attestation_reinscription = $name; 
         } 
-
+   
+  if ($request->file('attestation_rib')) {
+            $name = rand().'_'.$request->file('attestation_rib')->getClientOriginalExtension();
+            $filePath = public_path() . '/images';
+            $request->file('attestation_rib')->move($filePath, $name);
+            $renouv->attestation_rib = $name; 
+        } 
         $renouv->save();
         return redirect("boursier/reinscription/modification") ;
     }
     public function show($id)
     {
-        $renouvellements= Renouvellement::find($id);
+        $renouvellements= Renouvellement::withoutGlobalScopes()->where('id', $id)->first();
+        
         $exception = Exception::where("cni",$renouvellements->cni)->first() ;  
         return view("admin.pages.inscription.show", compact('renouvellements','exception'));
     }

@@ -40,8 +40,14 @@ Route::get('/symlink', function () {
  });
 Route::get('/',[PageVisiteurController::class, 'maquerInscBtn']);
 Auth::routes(['register' => false]);
+Route::get("etudiant/password",function(){
+           return view('auth.passwords.email');
+       }) ;
+Route::post('etudiant/editPassword', [StudentController::class, 'resetPassword']);
 //Student Route
+
 Route::get('etudiant/dropdownlistProvince', [CandidatureController::class, 'dropdownProvince'])->name('etudiant.dropdownlistProvince');
+
 Route::post("etudiant/check", [CandidatureController::class,'Check'])->name('etudiant.check');
 Route::post("candidature/store", [CandidatureController::class,'store'])->name('candidature.store');
 Route::post("candidature/validate", [CandidatureController::class,'validateCondidature'])->name('candidature.validate');
@@ -80,7 +86,7 @@ Route::group(['prefix' => 'boursier', 'as' => 'boursier.', 'middleware' => ['aut
     Route::get('pdf', [CandidatureController::class, 'indexPdfPage'] );
     Route::put('candidature/{id}', [CandidatureController::class, 'update'] )->name('update');
     Route::get('candidature/show/{id}', [CandidatureController::class, 'show'] )->name('show');
-    Route::get('exportCsv', [CandidatureController::class, 'exportCsv'] )->name('exportCsv');
+    Route::get('exportCsv/{status}', [CandidatureController::class, 'exportCsv'] )->name('exportCsv');
     Route::post("sendMailTo",[CandidatureController::class, 'sendMailTo']) ;  
     Route::post("sendMailGlobal",[CandidatureController::class, 'sendMailGlobal']) ; 
     Route::get('updateStatus', [CandidatureController::class, 'updateStatus'] )->name('updateStatus');
@@ -89,8 +95,8 @@ Route::group(['prefix' => 'boursier', 'as' => 'boursier.', 'middleware' => ['aut
 
 
     //Reclamations
-    Route::resource("reclamation",ReclamationController::class);
     Route::get("/reclamationArchivees",[ReclamationController::class,'getReclamationLues']);
+    Route::resource("reclamation",ReclamationController::class);
     Route::put('/clotureReclamation/{id}',[ReclamationController::class,"closeReclamation"])->name("close");
     //Renouvellement
     Route::get("/renouvellant",[RenouvellementController::class,'index']) ;
@@ -127,6 +133,8 @@ Route::group(['prefix' => 'boursier', 'as' => 'boursier.', 'middleware' => ['aut
     Route::put("formations/{id}",[FormationController::class,'update'])->name('editer');
     // Route::post("/demandeFormationDash",[FormationController::class,'store'])->name("formation") ;
     //student
+      
+ 
     Route::get("etudiant/liste",[StudentController::class,'index']) ;
     Route::get("etudiant/details/{id}",[StudentController::class,'show']) ;
     Route::get("etudiant/send" ,  [StudentController::class,'sendMailGlobal']) ;
@@ -153,15 +161,18 @@ Route::group(['prefix' => 'boursier', 'as' => 'boursier.', 'middleware' => ['aut
     Route::get("/addPanier",[FullCandidatureController::class,'addPanier'])->name('addPanier') ;  
     Route::get("sendToPanier/{type}",[FullCandidatureController::class,'sendToPanier']) ; 
     Route::post("finance/close/{id}",[FullCandidatureController::class,'close'])->name('finance.close') ;
-    Route::delete("intemidiare/destroy/{id}",[FullCandidatureController::class,'destroy'])->name('intemidiare.destroy') ;
+    Route::get("intemidiare/destroy/{cni}",[FullCandidatureController::class,'destroy'])->name('intemidiare.destroy') ;
     Route::get("editPanier/{id}",[FullCandidatureController::class,'editPanier'])->name('editPanier') ;
     Route::get("/deleteIntermidiare",[FullCandidatureController::class,'delete'])->name('deleteIntermidiare') ; 
+    Route::get("/deleteGlobalInter",[FullCandidatureController::class,'deleteGlobal'])->name('deleteGlobalInter') ; 
     Route::put("updatePanier/{id}",[FullCandidatureController::class,'updatePanier'])->name("updatePanier");
     Route::post("addMonatnt",[FullCandidatureController::class,'addMonatnt'])->name("addMonatnt");
     Route::put("addfile/{id}",[FullCandidatureController::class,'addFile'])->name("addfile");
     Route::put("annulerPanier/{id}",[FullCandidatureController::class,'annulerPanier'])->name("annulerPanier");
+     Route::get("annuler/{id}",[FullCandidatureController::class,'annuler'])->name("annuler");
     Route::get("downloadFile/{paiment}",[FullCandidatureController::class,'downloadFile']);
     Route::put("AddAvisSort/{id}",[FullCandidatureController::class,'addAvisSort'])->name("AddAvisSort");
+    Route::get("changeEtat/{id}",[FullCandidatureController::class,'changeEtat'])->name("changeEtat");
 
     
 
@@ -171,6 +182,8 @@ Route::group(['prefix' => 'boursier', 'as' => 'boursier.', 'middleware' => ['aut
 
     //pdf 
     Route::get('/getPDF' , [PdfController::class,"getFile"]) ;
+        Route::get('/filepdf/{num_panier}' , [PdfController::class,"getFilePDF"]) ;
+
     // archive
     Route::get('archive',[ArchiveController::class,'index']) ; 
     Route::get('getArchive/{id}',[ArchiveController::class,'show']) ;
@@ -204,10 +217,12 @@ Route::group(['prefix' => 'boursier', 'as' => 'boursier.', 'middleware' => ['aut
     Route::get('/market/demandes',[MarketController::class,'demandsGet']) ; 
     Route::get('/market/promotions',[MarketController::class,'promotionsGet']) ; 
     Route::get('/market/create',[MarketController::class,'index']) ;
+    Route::get('/market/list',[MarketController::class,'index1']) ;
     Route::post('/market/store',[MarketController::class,'store']) ; 
     Route::get('/market/forum/demandes/{id}',[MarketController::class,'showDemande']) ; 
     Route::get('/market/forum/promotions/{id}',[MarketController::class,'showPromotion']) ;
     Route::post('/market/forum/add/{id}',[MarketController::class,'forumAdd']) ; 
+    Route::post('/market/valider',[MarketController::class,'valideForum']) ; 
     // notifications 
     Route::get('/notification/read',function(){ // make all notifications read 
          Auth::user()->unreadNotifications->markAsRead() ; 
@@ -252,6 +267,7 @@ Route::get('/pdfpage', [CandidatureController::class, 'indexPdfPage']);
 
      // reset candidature
      Route::get('reset/{cni}',[CandidatureController::class, 'reset']); 
+       Route::get('resetCandidature/{cni}',[CandidatureController::class, 'resetCandidature']); 
         Route::get('boursier/statistics' , function() {
         return view('PublicChart') ;
     }) ;

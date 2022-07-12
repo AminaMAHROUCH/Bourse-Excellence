@@ -73,6 +73,8 @@
                                 <table id="exampleee" class="table table-bordered table-striped">
                                     <thead>
                                         <tr class="text-center">
+                                            <th>الاسم الكامل</th>
+                                <th>البريد الإل
                                             <th>
                                                 رقم الشكاية
                                             </th>
@@ -87,6 +89,8 @@
                                         @foreach ($list as $item)
                                             @if ($item->status == 'مفتوحة')
                                                 <tr role="row" class="text-center">
+                                        <td>{{ $item->nom_prenom }}</td>
+                                        <td>{{ $item->email }}</td>
                                                     <td>
                                                         {{ $item->id }}
                                                     </td>

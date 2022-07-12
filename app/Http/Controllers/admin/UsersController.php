@@ -7,6 +7,7 @@ use App\Http\Requests\MassDestroyUserRequest;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\models\Role;
+use App\Models\Candidature;
 use App\models\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
@@ -46,9 +47,13 @@ class UsersController extends Controller
         return view('admin.pages.users.edit', compact('roles', 'user'));
     }
 
-    public function update(Request $request, User $user)
+ public function update(Request $request, User $user)
     {
+       
         $user->update($request->all());
+        $test= Candidature::where('cni', $user->cni)->first();
+        $test->email= $user->email;
+        $test->save();
         $user->roles()->sync($request->input('roles', []));
 
         return redirect()->route('boursier.users.index', compact('user'));

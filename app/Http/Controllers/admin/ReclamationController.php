@@ -22,7 +22,8 @@ class ReclamationController extends Controller
         if( $role->titre == "admin")
          
         {
-            $list = Reclamation::paginate(6) ; //recent reclamation ...
+            $list = Reclamation::join('be_students', 'be_students.cni','=','be_reclamations.cni')
+        ->select('be_reclamations.*', 'be_students.nom_prenom', 'be_students.email')->paginate(6) ;  //recent reclamation ...
             // return $list ; 
             // if($list->reponse)
             // {
@@ -65,10 +66,14 @@ class ReclamationController extends Controller
 
     function store(Request $request)
     {
-        $rec = new Reclamation() ;  
+       $rec = new Reclamation() ;  
         $rec->cni  = Auth::user()->cni ;  
         $rec->cne  = Auth::user()->cne ;  
-        $rec->objet = $request->input('objt') ;  
+        if($request->input('objt')== 'آخـــــر'){
+            $rec->objet = $request->input('objet') ;  
+        }else{
+            $rec->objet = $request->input('objt') ;  
+        }
         $rec->contenu  = $request->input('text') ; 
         $rec->publier  = date('Y-m-d');  
         $rec->save() ;  
@@ -83,10 +88,10 @@ class ReclamationController extends Controller
         }
         return redirect("/boursier/reclamation") ;  
     }
-    function edit($id)
+   function edit($id)
     {
         $lists = Reclamation::find($id) ;  
-        $responses = Message::where('id_reclamation',$id)->paginate(6) ;   
+        $responses = Message::where('id_reclamation',$id)->orderBy('id', 'DESC')->paginate(6);   
         return view("admin.pages.reclamations.responseReclamation",compact("lists","responses")) ; 
     }
     public function update(Request $request , $id )

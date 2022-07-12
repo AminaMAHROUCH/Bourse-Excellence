@@ -78,6 +78,8 @@
                         <table id="example1" class="table table-bordered table-striped" role="grid">
                             <thead>
                                 <tr role="row">
+                                    <th>الاسم الكامل</th>
+                                <th>البريد الإلكترون
                                     <th> رقم الدورة</th>
                                     <th>نوعها</th>
                                     @can('operation_visualiser_supprimer_formation')
@@ -91,6 +93,8 @@
                             <tbody>
                                 @foreach ($list as $item)
                                     <tr>
+                                         <td>{{ $item->nom_prenom }}</td>
+                                        <td>{{ $item->email }}</td>
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->titre_formation }}</td>
                                    <!--     @if (Auth::user()->role != 'admin')

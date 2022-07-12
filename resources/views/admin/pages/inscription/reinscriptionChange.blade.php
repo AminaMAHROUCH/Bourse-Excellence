@@ -119,7 +119,26 @@ alert('لقد تسجيل طلبكم بنجاح، المرجو التحقق من 
                                 <div class="col-xl-6 col-lg-6 col-12 form-group">
                                     <label for="ecole"> المؤسسة :</label>
                                     <input id="ecole" type="text" class="form-control" name="school"
-                                        value="{{ $list->school }}">
+                                        value="{{ $list->ecole }}">
+                                </div>
+                                 <div class="col-xl-6 col-lg-6 col-12 form-group">
+                                    <label for="attestation_rib">   تحميل شهادة RIB   :</label>
+                                    <input id="attestation_rib" type="file" class="form-control"
+                                        name="attestation_rib" onchange="loadFile(event, 'img2')">
+                                    <div class="list-img text-center">
+                                        @if ($list->attestation_rib)
+                                            <a href="{{ asset('bourse_excellence/public/images/' . $list->attestation_rib) }}">
+                                                <img class="mt-4" id="img2"
+                                                    src={{ asset('bourse_excellence/public//images/' . $list->attestation_rib) }}
+                                                    style=" height: 200px; width: 300px; border-radius:15px"
+                                                    class="img-fluid" name="attestation_rib" class="text-center">
+                                            </a>
+                                        @else
+                                            <img class="mt-4" id="img2" src={{ asset('asset/300x200.png') }}
+                                                style=" height: 200px; width: 300px; border-radius:15px" class="img-fluid"
+                                                name="attestation_rib" class="text-center">
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
@@ -129,9 +148,9 @@ alert('لقد تسجيل طلبكم بنجاح، المرجو التحقق من 
                                         onchange="loadFile(event, 'img1')">
                                     <div class="list-img text-center">
                                         @if ($list->attestation)
-                                            <a href="{{ asset('images/' . $list->attestation) }}">
+                                            <a href="{{ asset('bourse_excellence/public/images/' . $list->attestation) }}">
                                                 <img class="mt-4" id="img1"
-                                                    src={{ asset('images/' . $list->attestation) }}
+                                                    src={{ asset('bourse_excellence/public/images/' . $list->attestation) }}
                                                     style=" height: 200px; width: 300px; border-radius:15px"
                                                     class="img-fluid" name="attestation" class="text-center">
                                             </a>
@@ -143,21 +162,21 @@ alert('لقد تسجيل طلبكم بنجاح، المرجو التحقق من 
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-12 form-group">
-                                    <label for="attestationreinscription">شهادة اعادة التسجيل في السنة الجارية :</label>
-                                    <input id="attestationreinscription" type="file" class="form-control"
-                                        name="attestationreinscription" onchange="loadFile(event, 'img2')">
+                                    <label for="attestation_reinscription">شهادة اعادة التسجيل في السنة الجارية :</label>
+                                    <input id="attestation_reinscription" type="file" class="form-control"
+                                        name="attestation_reinscription" onchange="loadFile(event, 'img2')">
                                     <div class="list-img text-center">
-                                        @if ($list->attestationreinscription)
-                                            <a href="{{ asset('images/' . $list->attestationreinscription) }}">
+                                        @if ($list->attestation_reinscription)
+                                            <a href="{{ asset('bourse_excellence/public//images/' . $list->attestation_reinscription) }}">
                                                 <img class="mt-4" id="img2"
-                                                    src={{ asset('images/' . $list->attestationreinscription) }}
+                                                    src={{ asset('bourse_excellence/public//images/' . $list->attestation_reinscription) }}
                                                     style=" height: 200px; width: 300px; border-radius:15px"
-                                                    class="img-fluid" name="attestationreinscription" class="text-center">
+                                                    class="img-fluid" name="attestation_reinscription" class="text-center">
                                             </a>
                                         @else
                                             <img class="mt-4" id="img2" src={{ asset('asset/300x200.png') }}
                                                 style=" height: 200px; width: 300px; border-radius:15px" class="img-fluid"
-                                                name="attestationreinscription" class="text-center">
+                                                name="attestation_reinscription" class="text-center">
                                         @endif
                                     </div>
                                 </div>

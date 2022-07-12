@@ -147,6 +147,15 @@
                                             <input class="w-100" value="{{ $candidature->cni }}" readonly>
                                         </div>
                                     </div>
+                                    <br>
+                                       <div class="row  ">
+                                        <div class="col-lg-3  text-bold">
+الحساب البنكي                                    
+</div>
+                                        <div class="col-lg-3">
+                                            <input class="w-100" value="{{ $candidature->rib }}" readonly>
+                                        </div>
+                                    </div>
                                     <br />
                                     <div class="row  ">
                                         <div class="col-lg-3  text-bold">
@@ -498,7 +507,7 @@
                                         value="{{ $candidature->promotion }}" ></div>
                                     <div class="col-lg-3 text-bold">السنة الدراسية :</div>
                                     <div class="col-lg-3"><input class="w-100" name="" id=""
-                                        value=" {{ $candidature->anneUniversitaire }}" ></div>
+                                        value=" {{ $candidature->anne_universitaire }}" ></div>
                                 </div><br />
 
                             </div>

@@ -218,7 +218,7 @@
                             @if ($candidature->action == 'مفعل')
                             <form action="{{ url('/etudiant/check') }}" method="post">
                                 @csrf
-                                <h2 class=" text-center mb-5">المرجو إدخال رقم انخراط القيم الديني</h2>
+                                <h2 class=" text-center mb-5"> المرجو إدخال رقم البطاقة الوطنية للقيم الديني  </h2>
                                 <input type="text" name="cni" class="form-control mt-5 pt-5 pb-5 text-center fs-2">
                                 <br />
                                 <div class="mt-5 text-center">

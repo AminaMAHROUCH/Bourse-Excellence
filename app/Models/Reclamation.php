@@ -31,6 +31,7 @@ class Reclamation extends Model  implements Searchable
         'published_at',
         'cne',
         'cni',
+        'status',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -48,6 +49,11 @@ class Reclamation extends Model  implements Searchable
     public function setPublishedAtAttribute($value)
     {
         $this->attributes['published_at'] = $value ? Carbon::createFromFormat(config('panel.date_format') . ' ' . config('panel.time_format'), $value)->format('Y-m-d H:i:s') : null;
+    }
+    
+    public function students(){
+        $std = Student::where('cni', $this->cni)->where('cne', $this->cne)->first();
+        return $std;
     }
 
     protected function serializeDate(DateTimeInterface $date)

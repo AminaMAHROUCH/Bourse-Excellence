@@ -33,6 +33,7 @@ class Renouvellement extends Model  implements Searchable
         'school',
         'AttestationBac',
         'RelvesNote',
+        'attestation_rib',
         'attestProfessionP',
         'salaire',
         'justification',

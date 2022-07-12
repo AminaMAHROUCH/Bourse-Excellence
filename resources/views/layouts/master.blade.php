@@ -607,6 +607,15 @@ $tab = Auth::user()->unreadNotifications;
                                         <p>اضافة عرض أو طلب</p>
                                     </a>
                                 </li>
+                                @can('markets')
+                                <li class="nav-item">
+                                    <a href="{{ url('boursier/market/list') }}" class="nav-link"
+                                        style="margin-right: 14px !important;">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>  العروض والطلبات</p>
+                                    </a>
+                                </li>
+                                @endcan
                                 <li class="nav-item">
                                     <a href="{{ url('boursier/market/promotions') }}" class="nav-link"
                                         style="margin-right: 14px !important;">

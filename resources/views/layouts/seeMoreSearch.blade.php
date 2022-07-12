@@ -264,14 +264,14 @@
                                             الجهة :
                                         </div>
                                         <div class="col-lg-3">
-                                            <input class="w-100" name="" id="" value="  {{ $etud->nom_region }}">
+                                            <input class="w-100" name="" id="" value="  ">
 
                                         </div>
                                         <div class="col-lg-3 text-bold">
                                             الاقليم
                                         </div>
                                         <div class="col-lg-3">
-                                            <input class="w-100" name="" id="" value="  {{ $etud->nom_province }}">
+                                            <input class="w-100" name="" id="" value=" ">
 
                                         </div>
                                     </div>
@@ -298,14 +298,14 @@
                                             رقم هاتف الأب :
                                         </div>
                                         <div class="col-lg-3">
-                                            <input class="w-100" name="" id="" value="{{ $etud->telephone_pere }}">
+                                            <input class="w-100" name="" id="" value="{{ $etud->telephone_adherent }}">
 
                                         </div>
                                         <div class="col-lg-3 text-bold">
                                             رقم هاتف الأم:
                                         </div>
                                         <div class="col-lg-3">
-                                            <input class="w-100" value=" {{ $etud->telephone_mere }}">
+                                            <input class="w-100" value=" {{ $etud->telephone_conjoint }}">
 
                                         </div>
                                     </div>
@@ -344,9 +344,9 @@
                                             شهادة عمل القيم(ة) الديني(ة) :
                                         </div>
                                         <div class="col-lg-3">
-                                            @if ($etud->attestationProfession_adhrent)
-                                                <a href="{{ asset('images/' . $etud->attestationProfession_adhrent) }}">
-                                                    <img src={{ asset('images/' . $etud->attestationProfession_adhrent) }}
+                                            @if ($etud->attestationProfession_adherent)
+                                                <a href="{{ asset('images/' . $etud->attestationProfession_adherent) }}">
+                                                    <img src={{ asset('images/' . $etud->attestationProfession_adherent) }}
                                                         style="height: 200px; width: 100%;" class="img-fluid  img-rounded">
                                                 </a>
                                             @else
@@ -391,9 +391,9 @@
                                             شهادة الدخل الشهري الزوج(ة) :
                                         </div>
                                         <div class="col-lg-3">
-                                            @if ($etud->attest_revenu_mensuel_conjt)
-                                                <a href="{{ asset('images/' . $etud->attest_revenu_mensuel_conjt) }}">
-                                                    <img src={{ asset('images/' . $etud->attest_revenu_mensuel_conjt) }}
+                                            @if ($etud->attest_revenu_mensuel_conj)
+                                                <a href="{{ asset('images/' . $etud->attest_revenu_mensuel_conj) }}">
+                                                    <img src={{ asset('images/' . $etud->attest_revenu_mensuel_conj) }}
                                                         style="height: 200px; width: 100%;" class="img-fluid  img-rounded">
                                                 </a>
                                             @else
@@ -502,29 +502,17 @@
                                 <table class="table table-bordered table-striped">
                                     <tr class="text-center">
                                         <th>السنة الدراسية</th>
+                                        <th>رقم الحساب </th>
+                                        <th>المبلغ </th>
+                                        <th>تاريخ</th>
                                         <th>الحالة</th>
                                         <th>Exceptionné ?</th>
                                     </tr>
-
-                                    @foreach ($etudBourse as $eb)
-                                        <tr class="text-center">
-                                            <td>{{ $eb->anne_universitaire }}</td>
-                                            @if ($eb->status == 'oui')
-                                                <td><a class="btn bg-green">{{ $eb->status }}</a></td>
-                                            @else
-                                                <td><a class="btn bg-warning">{{ $eb->status }}</a></td>
-                                            @endif
-
-                                            @if ($stopped && $stopped->anne_universitaire == $eb->anne_universitaire)
-                                                <td>متوقف</td>
-                                            @elseif ($stoppedDefi && $stoppedDefi->anne_universitaire ==
-                                                $eb->anne_universitaire)
-                                                <td>ارشيف</td>
-                                            @else
-                                                <td></td>
-                                            @endif
-                                        </tr>
-                                    @endforeach
+{{$etudBourse}}
+                                    <!--@foreach ($etudBourse as $eb)-->
+                                    <!--{{$eb}}-->
+                                     
+                                    <!--@endforeach-->
                                 </table>
                             </div>
                         </div>

@@ -78,6 +78,16 @@
                                 <li class="text-danger" class="fw-bold">{{ $message }}</li>
                             @endforeach
                         @endif
+                        @php
+                         $re= DB::table('be_renouvellements')->where('cni', Auth::user()->cni)->where('anne_universitaire', "2021/2022")->first();
+                          $ren= DB::table('be_students')->where('cni', Auth::user()->cni)->where('promotion', "2021")->first();
+                        @endphp
+                        @if($ren)
+                             <h3 style="color:red;">لا يمكنك إعادة التسجيل لهذه السنة </h3>
+                        @endif
+                        @if($re)
+                        <h3 style="color:red;">لقد سبق لك أن قمت بإعادة التسجيل بالنسبة لهذه السنة</h3>
+                        @else
                         <form class="new-added-form" action="{{ url('boursier/reinscription') }}" method="post"
                             enctype="multipart/form-data">
                             @csrf
@@ -104,9 +114,9 @@
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-6 col-12 form-group">
-                                        <label for="attestationreinscription">شهادة اعادة التسجيل في السنة الجارية :</label>
-                                        <input id="attestationreinscription" type="file" class="form-control"
-                                            name="attestationreinscription" onchange="loadFile(event, 'img2')">
+                                        <label for="attestation_reinscription">شهادة اعادة التسجيل في السنة الجارية :</label>
+                                        <input id="attestation_reinscription" type="file" class="form-control"
+                                            name="attestation_reinscription" onchange="loadFile(event, 'img2')">
                                         <div class="list-img text-center">
                                             <img class="mt-4" id="img2" src={{ asset('asset/300x200.png') }}
                                                 style="width: 300px; height:200px; border-radius:15px " class="text-center">
@@ -115,13 +125,22 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-xl-6 col-lg-6 col-12 form-group">
-                                        <label for="numero_compte"> رقم الحساب البنكي :</label>
-                                        <input id="numero_compte" type="number" class="form-control" name="numero_compte">
+                                        <label for="numero_compte"> رقم الحساب البنكي (24 رقم) :</label>
+                                        <input id="numero_compte"  type="number" class="form-control" name="numero_compte">
                                         @if ($errors->get('numero_compte'))
                                             @foreach ($errors->get('numero_compte') as $message)
                                                 <li class="text-danger" class="fw-bold">{{ $message }}</li>
                                             @endforeach
                                         @endif
+                                    </div>
+                                         <div class="col-xl-6 col-lg-6 col-12 form-group">
+                                        <label for="attestation_rib">تحميل شهادة RIB :</label>
+                                        <input id="attestation_rib" type="file" class="form-control"
+                                            name="attestation_rib" onchange="loadFile(event, 'img2')">
+                                        <div class="list-img text-center">
+                                            <img class="mt-4" id="img2" src={{ asset('asset/300x200.png') }}
+                                                style="width: 300px; height:200px; border-radius:15px " class="text-center">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -137,6 +156,7 @@
                                     </div>
                                 @endif
                         </form>
+                        @endif
                     </div>
                 </div>
             </div>

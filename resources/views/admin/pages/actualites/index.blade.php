@@ -79,7 +79,7 @@
                                         <th class="text-center">التاريخ</th>
                                         <th class="text-center">الموضوع</th>
                                         @can('operation_editer_supprimer_visualiser_actualites')
-                                            <th colspan="3" class="text-center"> الاجراءات</th>
+                                            <th  class="text-center"> الاجراءات</th>
                                         @endcan
                                     </tr>
                                 </thead>
@@ -89,37 +89,37 @@
                                             <td>{{ $actualite->publier }}</td>
                                             <td>{{ $actualite->titre }}</td>
                                             @can('operation_editer_supprimer_visualiser_actualites')
-                                                @can('editer_actualite')
-                                                    <td class="text-center">
-                                                        <button class="btn" style="border: none; background: non;"
-                                                            data-toggle="modal" data-target="#edit-{{ $actualite->id }}">
-                                                            <i class="fas fa-pencil-alt mr-1 text-warning">
-                                                            </i>
-                                                        </button>
-                                                    </td>
-                                                @endcan
-                                                @can('supprimer_actualite')
-                                                    <td>
-                                                        <form action="{{ route('boursier.actualites.destroy', $actualite->id) }}"
-                                                            method="post">
-                                                            {{ csrf_field() }}
-                                                            {{ method_field('DELETE') }}
-                                                            <button class="btn" type="submit"><i
-                                                                    class="fas fa-trash text-red"></i></button>
-                                                        </form>
-                                                    </td>
-                                                @endcan
-                                                @can('visualiser_actualite')
-                                                    <td class="text-center"> <button
-                                                            style="padding: 0; border: none; background: none;" type="button"
-                                                            data-toggle="modal" data-target="#modal-show-{{ $actualite->id }}"
-                                                            data-id="{{ $actualite->id }}">
-                                                            <i class="fas fa-eye text-info"></i>
-                                                        </button>
-                                                    </td>
-                                                @endcan
-                                            </tr>
+                                             <td style="display: -webkit-inline-box;">
+
+                                        @can('editer_actualite')
+
+                                        <button class="btn" style="border: none; background: non;" data-toggle="modal"
+                                            data-target="#edit-{{ $actualite->id }}">
+                                            <i class="fas fa-pencil-alt mr-1 text-warning">
+                                            </i>
+                                        </button>
+
                                         @endcan
+                                        @can('supprimer_actualite')
+                                        <form action="{{ route('boursier.actualites.destroy', $actualite->id) }}"
+                                            method="post">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <button class="btn" type="submit"><i
+                                                    class="fas fa-trash text-red"></i></button>
+                                        </form>
+                                        @endcan
+                                        @can('visualiser_actualite')
+                                        <button style="    padding: 7px; border: none; background: none;" type="button"
+                                            data-toggle="modal" data-target="#modal-show-{{ $actualite->id }}"
+                                            data-id="{{ $actualite->id }}">
+                                            <i class="fas fa-eye text-info"></i>
+                                        </button>
+                                        @endcan
+                                    </td>
+                                            @endcan
+                                            </tr>
+                                      
                                     @endforeach
                                 </tbody>
 
@@ -136,7 +136,7 @@
         <div class="modal fade" id="modal-show-{{ $actualite->id }}" tabindex="-1" role="dialog"
             aria-labelledby="myModalLabel">
             <div class="modal-dialog">
-                <div class="modal-content">
+                <div class="modal-content" style="width:160%;">
                     <div class="modal-header bg-orange ">
                         <h3 class="modal-title text-center" id="exampleModalLabel">مضمون الإعلان</h3>
                         <button type="button" class="close" style="font-size: 40px !important" data-dismiss="modal"
@@ -170,7 +170,7 @@
         <div class="modal fade" id="edit-{{ $actualite->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
-                <div class="modal-content">
+                <div class="modal-content" style="width: 160%;">
                     <div class="modal-header bg-orange">
                         <h3 class="modal-title text-center" id="exampleModalLabel">تعديل الإعلان </h3>
                         <button type="button" class="close" style="font-size: 40px !important" data-dismiss="modal"
@@ -184,13 +184,13 @@
                             {{ method_field('PUT') }}
                             <div class="row">
                                 <div class="col-12-xxxl col-lg-12 col-12 form-group">
-                                    <label>الموضوع</label>
+                                    <label>نص الإعلان</label>
                                     <input type="text" placeholder="" value="{{ $actualite->titre }}"
                                         class="form-control" name="title">
                                 </div>
                                 <div class="col-12-xxxl col-lg-12 col-12 form-group">
-                                    <label>مضمون الإعلان</label>
-                                    <textarea class="textarea form-control  text-skyblue " name="content"
+                                    <label>محتوى الإعلان</label>
+                                    <textarea class="textarea form-control ckeditor" name="content"
                                         id="form-message" cols="10" rows="7">{!! $actualite->contenu !!}</textarea>
                                 </div>
                                 <div class="col-12 form-group mg-t-8 text-center">
@@ -204,9 +204,25 @@
             </div>
         </div>
     @endforeach
+@endsection
+<script src="{{ asset('asset/files/js/jquery-3.3.1.min.js') }}"></script>
+
     <script>
         $(function() {
-            $('#example1').DataTable();
+            $('#example1').dataTable({
+"oLanguage": {
+    "sSearch": "البحث",
+    "sLengthMenu": "أظهر _MENU_طلب",
+    "oPaginate": {
+           "sNext": "اللاحق",
+           "sPrevious": "السابق",
+           
+         },
+         
+     "sInfo": "أظهر _START_ إلى _END_ من أصل _TOTAL_ طلب",
+     "sEmptyTable": "لا توجد معطيات في هذه الصفحة أو هي في طور التحديث "
+    
+}
+});
         });
     </script>
-@endsection

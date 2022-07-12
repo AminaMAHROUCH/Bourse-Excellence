@@ -1,0 +1,4 @@
+[27-May-2022 22:31:24 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Exceptions\Handler' not found in /home/amefemaroc/public_html/bourse_excellence/app/Exceptions/Handler.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Exceptions/Handler.php on line 8

@@ -336,10 +336,10 @@
                                                     <label style="float: right !important;" for="releve"
                                                         class="float-left">في حالة مزاولة
                                                         الزوج(ة) لمهنة يجب إضافتها</label>
-                                                    <input id="jobe" type="text" class="form-control wizard-required"
+                                                    <input id="jobe" type="text" class="form-control "
                                                         name="profession_conjoint"
                                                         value="{{ $Candidature->profession_conjoint }}">
-                                                    <div class="wizard-form-error"></div>
+                                                    
 
                                                 </div>
                                             </div>
@@ -1002,6 +1002,12 @@
                                                <li> من أجل تحميل مطبوع طلب الحصول على منحة التفوق المرجو الضغط على هذا الرابط<a
                             href="{{ asset('asset/damandeEtudiant.pdf') }}" target="_blank">
                             <i class="fa fa-download"></i>طلب الحصول على منحة التفوق
+                        </a>
+                    </li><br>
+                    
+                             <li> من أجل تحميل مطبوع التزام الطالب(ة) للاستفادة من منحة التفوق المرجو الضغط على هذا الرابط
+                             <a href="{{ asset('asset/EngagementEtudiant.pdf') }}" target="_blank">
+                            <i class="fa fa-download"></i>  التزام الطالب(ة)
                         </a>
                     </li><br>
                                                 <li>من أجل فتح حساب بنكي "بريد بنك"، المرجو الضغط على هذا الرابط (تقدم

@@ -11,7 +11,10 @@
 @section('content')
     <div class="card" style="margin-right: 30px !important ; margin-left : 30px !important ;  margin-top : 40px !important">
         <div class="card-body">
-            <h2 class="text-center " style="margin-top:5% !important ; margin-bottom : 7% !important  ">الصفحة الرئيسية
+            <h2 class="text-center " style="margin-top:5% !important ; margin-bottom : 7% !important  ">مؤسسة محمد السادس للنهوض بالأعمال الاجتماعية للقيمين الدينيين	
+ <br>
+ البوابة الخاصة بتدبير منحة التفوق	
+
             </h2>
         </div>
   </div>

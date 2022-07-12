@@ -1,0 +1,16 @@
+[27-May-2022 22:31:41 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Notifications\Notification' not found in /home/amefemaroc/public_html/bourse_excellence/app/Notifications/marketNotification.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Notifications/marketNotification.php on line 11
+[27-May-2022 22:31:42 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Notifications\Notification' not found in /home/amefemaroc/public_html/bourse_excellence/app/Notifications/NewActualiteNotification.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Notifications/NewActualiteNotification.php on line 11
+[27-May-2022 22:31:42 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Notifications\Notification' not found in /home/amefemaroc/public_html/bourse_excellence/app/Notifications/NewUserNotification.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Notifications/NewUserNotification.php on line 11
+[27-May-2022 22:53:51 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Notifications\Notification' not found in /home/amefemaroc/public_html/bourse_excellence/app/Notifications/marketNotification.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Notifications/marketNotification.php on line 11

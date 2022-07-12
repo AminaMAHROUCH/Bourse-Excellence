@@ -196,8 +196,8 @@
                                         <div class="col-lg-3">
 
                                             @if ($renouvellements->attestation)
-                                                <a href="{{ asset('images/' . $renouvellements->attestation) }}">
-                                                    <img src={{ asset('images/' . $renouvellements->attestation) }}
+                                                <a href="{{ asset('bourse_excellence/public/images/' . $renouvellements->attestation) }}">
+                                                    <img src={{ asset('bourse_excellence/public/images/' . $renouvellements->attestation) }}
                                                         style=" height: 200px; width: 100%;" class="img-fluid  img-rounded">
                                                 </a>
                                             @else
@@ -212,8 +212,8 @@
                                         <div class="col-lg-3">
                                             @if ($renouvellements->attestation_reinscription)
                                                 <a
-                                                    href="{{ asset('images/' . $renouvellements->attestation_reinscription) }}">
-                                                    <img src={{ asset('images/' . $renouvellements->attestation_reinscription) }}
+                                                    href="{{ asset('bourse_excellence/public/images/' . $renouvellements->attestation_reinscription) }}">
+                                                    <img src={{ asset('bourse_excellence/public/images/' . $renouvellements->attestation_reinscription) }}
                                                         style=" height: 200px; width: 100%;" class="img-fluid  img-rounded">
                                                 </a>
                                             @else

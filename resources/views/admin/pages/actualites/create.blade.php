@@ -60,7 +60,7 @@
                                 <div class="col-sm-12">
                                     <!-- text input -->
                                     <div class="form-group">
-                                        <label>الموضوع</label>
+                                        <label> العنوان</label>
                                         <input type="text" class="form-control" name="title">
                                     </div>
                                 </div>
@@ -68,8 +68,8 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label>مضمون الإعلان</label>
-                                        <textarea class="textarea" name="content" placeholder="Place some text here"
+                                        <label>نص الإعلان</label>
+                                        <textarea class="textarea ckeditor" name="content" placeholder="Place some text here"
                                             style="width: 100%; height: 140px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                                     </div>
                                 </div>
@@ -77,11 +77,11 @@
                             </div>
                         </div>
                         <div class="card-footer bg-white">
-                            <a href="{{ url('/boursier/actualites') }}" class="btn bg-gray "
-                                style="color : white !important"> قائمة
-                                الاعلانات</a>
-                            <button type="submit" class="btn bg-green">انشر</button>
-                            <button type="reset" class="btn bg-red">مسح</button>
+                            <!--<a href="{{ url('/boursier/actualites') }}" class="btn bg-gray "-->
+                            <!--    style="color : white !important"> قائمة-->
+                            <!--    الاعلانات</a>-->
+                            <button type="submit" class="btn bg-green">نشر</button>
+                            <button type="reset" class="btn bg-red">إلغاء</button>
                         </div>
                     </form>
                 </div>

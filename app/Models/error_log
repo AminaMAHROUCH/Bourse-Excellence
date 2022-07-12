@@ -1,0 +1,120 @@
+[27-May-2022 22:31:33 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Eloquent\Model' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/Actualite.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/Actualite.php on line 12
+[27-May-2022 22:31:34 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Eloquent\Model' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/Adherent.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/Adherent.php on line 12
+[27-May-2022 22:31:34 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Eloquent\Model' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/Archive.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/Archive.php on line 15
+[27-May-2022 22:31:34 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Eloquent\Model' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/Bourse.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/Bourse.php on line 10
+[27-May-2022 22:31:34 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Eloquent\Model' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/Candidature.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/Candidature.php on line 18
+[27-May-2022 22:31:35 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Eloquent\Model' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/Config.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/Config.php on line 8
+[27-May-2022 22:31:35 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Eloquent\Model' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/Contorole.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/Contorole.php on line 8
+[27-May-2022 22:31:35 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Eloquent\Model' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/DataPdf.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/DataPdf.php on line 8
+[27-May-2022 22:31:36 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Eloquent\Model' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/Document.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/Document.php on line 10
+[27-May-2022 22:31:36 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Eloquent\Model' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/Exception.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/Exception.php on line 12
+[27-May-2022 22:31:36 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Eloquent\Model' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/Formation.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/Formation.php on line 9
+[27-May-2022 22:31:36 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Eloquent\Model' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/Forum.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/Forum.php on line 8
+[27-May-2022 22:31:36 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Eloquent\Model' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/FullCandidature.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/FullCandidature.php on line 14
+[27-May-2022 22:31:37 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Eloquent\Model' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/Intermediaire.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/Intermediaire.php on line 8
+[27-May-2022 22:31:37 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Eloquent\Model' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/Market.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/Market.php on line 8
+[27-May-2022 22:31:37 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Eloquent\Model' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/Message.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/Message.php on line 8
+[27-May-2022 22:31:37 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Eloquent\Model' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/Notification.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/Notification.php on line 8
+[27-May-2022 22:31:37 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Eloquent\Model' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/Paiment.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/Paiment.php on line 13
+[27-May-2022 22:31:38 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Eloquent\Model' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/Panier.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/Panier.php on line 11
+[27-May-2022 22:31:38 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Eloquent\Model' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/Permission.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/Permission.php on line 9
+[27-May-2022 22:31:38 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Eloquent\Model' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/Permission_role.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/Permission_role.php on line 8
+[27-May-2022 22:31:38 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Eloquent\Model' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/Province.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/Province.php on line 8
+[27-May-2022 22:31:39 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Eloquent\Model' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/Reclamation.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/Reclamation.php on line 13
+[27-May-2022 22:31:39 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Eloquent\Model' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/Region.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/Region.php on line 8
+[27-May-2022 22:31:39 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Eloquent\Model' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/Renouvellement.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/Renouvellement.php on line 14
+[27-May-2022 22:31:39 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Eloquent\Model' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/Role.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/Role.php on line 9
+[27-May-2022 22:31:39 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Eloquent\Model' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/RoleUser.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/RoleUser.php on line 9
+[27-May-2022 22:31:40 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Eloquent\Model' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/Stage.php:12
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/Stage.php on line 12
+[27-May-2022 22:31:40 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Database\Eloquent\Model' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/Student.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/Student.php on line 15
+[27-May-2022 22:31:40 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Auth\User' not found in /home/amefemaroc/public_html/bourse_excellence/app/Models/User.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Models/User.php on line 19

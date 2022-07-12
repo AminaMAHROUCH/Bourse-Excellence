@@ -154,7 +154,21 @@
     @endforeach
     <script>
         $(function() {
-            $('#example1').DataTable();
+            $('#example1').dataTable({
+"oLanguage": {
+    "sSearch": "البحث",
+    "sLengthMenu": "أظهر _MENU_طلب",
+    "oPaginate": {
+           "sNext": "اللاحق",
+           "sPrevious": "السابق",
+           
+         },
+         
+     "sInfo": "Got a total of _TOTAL_ entries to show (_START_ to _END_)",
+     "sEmptyTable": "لا توجد معطيات في هذه الصفحة أو هي في طور التحديث "
+    
+}
+});
         });
     </script>
 @endsection

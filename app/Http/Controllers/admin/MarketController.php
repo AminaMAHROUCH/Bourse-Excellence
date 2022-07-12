@@ -14,9 +14,17 @@ class MarketController extends Controller
     //
     public function index()
     {
+        
         $markets = Market::where('cni',Auth::user()->cni)->paginate(4) ;   
         return view("admin.pages.market.createDemanPromo",compact("markets")) ; 
     }
+
+    public function index1()
+        {
+            
+            $markets = Market::paginate(4) ;   
+            return view("admin.pages.market.DemanPromo",compact("markets")) ; 
+        }
 
     function store(Request $request)
     {
@@ -40,13 +48,13 @@ class MarketController extends Controller
 
     public function demandsGet()
     {
-        $demandes = Market::where('type',"طلب")->paginate(4) ;   
+        $demandes = Market::where('type',"طلب")->where('valider',1)->paginate(4) ;   
         return view('admin.pages.market.demandes',compact("demandes")) ; 
     }
     
     public function promotionsGet()
     {
-        $promotions = Market::where('type',"عرض")->paginate(4) ;   
+$promotions = Market::where('type',"عرض")->where('valider',1)->paginate(4) ;   
         return view('admin.pages.market.promotions',compact("promotions")) ; 
     }
     public function showDemande($id)
@@ -60,6 +68,14 @@ class MarketController extends Controller
         $promotion = Market::where('id',$id)->first() ; 
         $forums = Forum::where('id_market',$id)->paginate(4) ; 
         return  view('admin.pages.market.forumPromotions',compact('promotion',"forums")) ; 
+    }
+    
+    public function valideForum(Request $req){
+        $id= $req->input('id');
+        $market= Market::where('id', $id)->first();
+        $market->valider = 1;
+        $market->save();
+        
     }
 
     public function forumAdd(Request $request,$id)

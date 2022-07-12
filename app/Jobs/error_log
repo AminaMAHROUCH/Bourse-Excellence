@@ -1,0 +1,12 @@
+[27-May-2022 22:31:29 UTC] PHP Fatal error:  Uncaught Error: Interface 'Illuminate\Contracts\Queue\ShouldQueue' not found in /home/amefemaroc/public_html/bourse_excellence/app/Jobs/SendEmailJob.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Jobs/SendEmailJob.php on line 15
+[27-May-2022 22:31:29 UTC] PHP Fatal error:  Uncaught Error: Interface 'Illuminate\Contracts\Queue\ShouldQueue' not found in /home/amefemaroc/public_html/bourse_excellence/app/Jobs/SendMailJob.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Jobs/SendMailJob.php on line 15
+[27-May-2022 22:31:29 UTC] PHP Fatal error:  Uncaught Error: Interface 'Illuminate\Contracts\Queue\ShouldQueue' not found in /home/amefemaroc/public_html/bourse_excellence/app/Jobs/SendStudentMailJob.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/amefemaroc/public_html/bourse_excellence/app/Jobs/SendStudentMailJob.php on line 15
